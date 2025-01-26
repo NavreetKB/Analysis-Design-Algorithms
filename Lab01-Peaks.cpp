@@ -7,7 +7,7 @@ int findPeak1D(int arr[],int n){
     int mid=(s+e)/2;
     while (s<=e)
     {
-       if(arr[mid]>arr[mid-1] && arr[mid]>arr[mid+1])
+       if(arr[mid]>=arr[mid-1] && arr[mid]>=arr[mid+1])
        {
          return mid;
        }
