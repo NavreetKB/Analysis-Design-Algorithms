@@ -97,22 +97,20 @@ WORKING:
 11. To  get |A| we get the sum of squares of all values of A and similarly get |B|.
 12. cosine is obtained by the above mentioned fromula.
 
-OUTPUT:  
+OUTPUT:    
 dictA:  
- {'education': 3, 'cornerstone': 1, 'individual': 1, 'societal': 1, 'progress': 1, 'empowers': 1, 'individuals': 2, 'knowledge': 1, 'skills': 1, 'critical': 1, 'thinking': 1, 'abilities': 1, 'enabling': 1, 'navigate': 1, 'complexities': 1, 'modern': 1, 'world': 1, 'unlock': 1, 'potential': 1, 'pursue': 1, 'dreams': 1, 'contribute': 1, 'meaningfully': 1, 'society': 2, 'access': 1, 'quality': 1, 'crucial': 1, 'breaking': 1, 'cycle': 1, 'poverty': 1, 'promoting': 1, 'social': 1, 'mobility': 1, 'fostering': 1, 'equitable': 1}    
-   
+ {'education': 3, 'cornerstone': 1, 'individual': 1, 'societal': 1, 'progress': 1, 'empowers': 1, 'individuals': 2, 'knowledge': 1, 'skills': 1, 'critical': 1, 'thinking': 1, 'abilities': 1, 'enabling': 1, 'navigate': 1, 'complexities': 1, 'modern': 1, 'world': 1, 'unlock': 1, 'potential': 1, 'pursue': 1, 'dreams': 1, 'contribute': 1, 'meaningfully': 1, 'society': 2, 'access': 1, 'quality': 1, 'crucial': 1, 'breaking': 1, 'cycle': 1, 'poverty': 1, 'promoting': 1, 'social': 1, 'mobility': 1, 'fostering': 1, 'equitable': 1}  
+ 
 dictB:  
- {"here's": 1, 'alternative': 1, 'text': 1, 'slightly': 1, 'different': 1, 'emphasis:': 1, 'education': 3, 'fundamental': 1, 'individual': 1, 'societal': 1, 'advancement': 1, 'empowers': 1, 'individuals': 2, 'knowledge': 1, 'skills': 1, 'critical': 1, 'thinking': 1, 'necessary': 1, 'thrive': 1, 'ever-changing': 1, 'world': 1, 'unlock': 1, 'full': 1, 'potential': 1, 'pursue': 1, 'aspirations': 1, 'become': 1, 'active': 1, 'engaged': 1, 'members': 1, 'society': 2, 'ensuring': 1, 'equitable': 3, 'access': 1, 'quality': 1, 'paramount': 1, 'breaking': 1, 'barriers': 1, 'opportunity': 1, 'fostering': 2, 'social': 1, 'mobility': 1, 'building': 1, 'worldd': 1}  
+ {'education': 3, 'fundamental': 1, 'individual': 1, 'societal': 1, 'advancement': 1, 'empowers': 1, 'individuals': 2, 'knowledge': 1, 'skills': 1, 'critical': 1, 'thinking': 1, 'necessary': 1, 'thrive': 1, 'ever-changing': 1, 'world': 1, 'unlock': 1, 'full': 1, 'potential': 1, 'pursue': 1, 'aspirations': 1, 'become': 1, 'active': 1, 'engaged': 1, 'members': 1, 'society': 2, 'ensuring': 1, 'equitable': 3, 'access': 1, 'quality': 1, 'paramount': 1, 'breaking': 1, 'barriers': 1, 'opportunity': 1, 'fostering': 2, 'social': 1, 'mobility': 1, 'building': 1, 'worldd': 1}  
  
 Grand dictionary:  
  {'education': 9, 'individual': 1, 'societal': 1, 'empowers': 1, 'individuals': 4, 'knowledge': 1, 'skills': 1, 'critical': 1, 'thinking': 1, 'world': 1, 'unlock': 1, 'potential': 1, 'pursue': 1, 'society': 4, 'access': 1, 'quality': 1, 'breaking': 1, 'social': 1, 'mobility': 1, 'fostering': 2, 'equitable': 3}  
-
+ 
 modA = 7.0  
-modB = 8.306623862918075  
+modB = 7.937253933193772  
 A.B=  38  
-consine =  0.6535232024656042  
-
-
+consine =  0.6839357130643159  
 
 
 
