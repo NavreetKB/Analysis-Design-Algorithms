@@ -2,7 +2,7 @@
 
 ## Lab - 01      Date: 23-01-2025    
  
-### -------------------------Program - 01 ---------------------------    
+### ------------------------- Program - 01 ---------------------------    
 AIM : To find Peak element in a given 1D and 2D array.    
 WORKING:    
 1D array:    
@@ -49,7 +49,7 @@ Space Complexity: 1D: O(n)
                   2D: O(n^2)  
                   
 <br/><br/>
-### -------------------------Program - 02 ---------------------------    
+### ------------------------- Program - 02 ---------------------------    
 
 AIM: To create a program that creates a magic square as per the size of square given by user (odd sizes only).  
 WORKING:  
@@ -80,7 +80,7 @@ Time Complexity: O(n^2)
 Space Complexity: O(n^2)  
 
 <br/><br/>
-### -------------------------Program - 03 ---------------------------      
+### ------------------------- Program - 03 ---------------------------      
 
 AIM : To find the extent of similarity between 2 text documents by using 'Cosine Similarity'.  
 WORKING:  
@@ -111,6 +111,137 @@ modA = 7.0
 modB = 7.937253933193772  
 A.B=  38  
 consine =  0.6839357130643159  
+## Lab - 02      Date: 30-01-2025    
+ 
+### ------------------------- Program - 01 ---------------------------    
+AIM:To analyse and plot a graph for Time Complexity of magic square algorithm.  
+WORKING:  
+1. Import C libraries like ctime, chrono,cmath,etc.
+2. In the algoritm of magic square there is a 'for' loop that runs n^2 times, hence it is evident that the time complexity of the program is O(n^2).
+3. To obtain data points we start with a value of sqaure size and start the timer.
+4. We call the magic square function 100 times and then stop the timer.
+5. We get the average duration by (end-start)/100
+    ```
+          auto duration = duration_cast<nanoseconds>(end - start);
+          double avg = static_cast<long double>(duration.count())/100;
+      
+7. Store each size and corresponding time in arrays.
+8. Repeat steps 3 to 6 in a loop, increasing the size in each iteration.
+9. Get the arrays of size and array of corresponding times.
+10. Using these sizes and times arrays plot the graph using matplotlib.
+
+OUTPUT :  
+size of square : 3  time taken 0  
+size of square : 9  time taken 0      
+size of square : 27  time taken 11630  
+size of square : 81  time taken 142490  
+size of square : 243  time taken 757750  
+size of square : 729  time taken 1.03548e+007  
+
+Time Complexity : O(n^2)    
+Space Complexity: O(n^2)  
+
+GRAPH:  
+![magicsqare](https://github.com/user-attachments/assets/f6ed0571-abf0-4da7-a6c3-f733731a891a)
+
+
+### ------------------------- Program - 02 ---------------------------    
+AIM : To analyse the time complexity of Insertion sort (best, average and worst case)    
+WORKING:    
+1. Insertion sort algorithm works by iteratively inserting each element of an unsorted list into its correct position in a sorted portion of the list.
+2. We start with second element of the array as first element in the array is assumed to be sorted.  
+3. Compare second element with the first element and check if the second element is smaller then swap them.  
+4. Move to the third element and compare it with the first two elements and put at its correct position.  
+5. Repeat until the entire array is sorted.
+6. To measure time we have an initailising function which initialises an array of given size with random numbers.
+7. Start the timer and call the inerstion sort function 10 times in loop.
+8. stop the timer and get the average time by (end-start)/10.
+9. Repeat the same process in a loop and in each iteration multiply the size by 10.
+10. Get the values of sizes and corresponding times in arrays.
+11. Using matplotlib, plot the graph of array size vs time taken.
+12. Best case: O(n), If the list is already sorted, where n is the number of elements in the list.    
+13. Average case: O(n2), If the list is randomly ordered    
+14. Worst case: O(n2), If the list is in reverse order    
+
+OUTPUT:  
+(average case):
+size : 7  time :0  
+size : 35  time :0  
+size : 175  time :0  
+size : 875  time :52400  
+size : 4375  time :2.5276e+006  
+size : 21875  time :6.973e+007  
+size : 109375  time :1.73914e+009  
+GRAPH (Average Case):  
+![InsertionSort](https://github.com/user-attachments/assets/cbbae104-7291-4fa8-b819-edb3cf644513)
+
+(best case):    
+![bestIS](https://github.com/user-attachments/assets/b3fd51d1-22a5-4ae7-a1f2-5e61d0a9c148)
+
+### ------------------------- Program - 03 ---------------------------      
+AIM : To analyse the time complexity of Quick sort (best and average/worst case).  
+WORKING:  
+1. QuickSort is a sorting algorithm based on the Divide and Conquer that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.  
+2. The first element is chosen as pivot here and all elements smaller than pivot are moved to its left and greater ones to the right.  
+3. Recursively apply the same process to the two partitioned sub-arrays (left and right of the pivot).  
+4. The recursion stops when there is only one element left in the sub-array, as a single element is already sorted.
+5. To measure time we have an initailising function which initialises an array of given size with random numbers.
+6. Start the timer and call the inerstion sort function 10 times in loop.  
+7. stop the timer and get the average time by (end-start)/10.  
+8. Repeat the same process in a loop and in each iteration multiply the size by 10.  
+9. Get the values of sizes and corresponding times in arrays.  
+10. Using matplotlib, plot the graph of array size vs time taken.  
+Best Case: O(n log n), Occurs when the pivot element divides the array into two equal halves.  
+Average Case (O(n log n)), On average, the pivot divides the array into two parts, but not necessarily equal.  
+Worst Case: (O(n²)), Occurs when the smallest or largest element is always chosen as the pivot (e.g., sorted arrays).   
+
+OUTPUT:  
+(average case)  
+size : 5  time :164  
+size : 25  time :726  
+size : 125  time :8385  
+size : 625  time :155490   
+size : 3125  time :3.36806e+06  
+size : 15625  time :8.82135e+07        
+![QuikAVG](https://github.com/user-attachments/assets/875950bc-30a0-4b5d-98d8-82b187f263ab)
+
+
+(worst case)    
+size : 5  time :143  
+size : 25  time :937  
+size : 125  time :12473   
+size : 625  time :244608  
+size : 3125  time :5.82058e+06  
+size : 15625  time :1.61703e+08     
+![QuickWC](https://github.com/user-attachments/assets/cc44b29c-5c20-401c-83a1-f909b2a243da)  
+
+### ------------------------- Program - 04 ---------------------------     
+AIM : To analyse and plot graph of time complexity of MergeSort algorithm.  
+WORKING:  
+1.  It works by recursively dividing the input array into smaller subarrays and sorting those subarrays then merging them back together to obtain the sorted array.
+2.  Divide the list or array recursively into two halves until it can no more be divided.
+3.  Each subarray is sorted individually using the merge sort algorithm.
+4.  The sorted subarrays are merged back together in sorted order. The process continues until all elements from both subarrays have been merged.
+5.  To measure time we have an initailising function which initialises an array of given size with random numbers.
+6. Start the timer and call the inerstion sort function 10 times in loop.
+7. stop the timer and get the average time by (end-start)/10.
+8. Repeat the same process in a loop and in each iteration multiply the size by 10.
+9. Get the values of sizes and corresponding times in arrays.
+10. Using matplotlib, plot the graph of array size vs time taken.
+Time Complexity : O(n log n)
+
+OUTPUT:  
+size : 5  time :0.3  
+size : 25  time :3.1  
+size : 125  time :14.7  
+size : 625  time :82.7  
+size : 3125  time :454.1   
+size : 15625  time :2557.8  
+size : 78125  time :14650.8  
+Graph:  
+![MergeSort](https://github.com/user-attachments/assets/d67dcb41-6f54-4ca0-a66c-c95b6b36f202)
+
+
 
 
 
