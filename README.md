@@ -242,8 +242,33 @@ Graph:
 ![MergeSort](https://github.com/user-attachments/assets/d67dcb41-6f54-4ca0-a66c-c95b6b36f202)
 
 
+### ------------------------- Program - 05 ---------------------------   
+AIM : To analyse and plot graph of time complexity of HeapSort algorithm.  
+WORKING:    
+1. Heap sort is a comparison-based sorting technique based on Binary Heap Data Structure.
+2. we first find the max (or min) element and swap it with the last (or first). We repeat the same process for the remaining elements.
+3. Rearrange array elements so that they form a Max Heap.
+4. Repeat the following steps until the heap contains only one element:
+5. Swap the root element of the heap (which is the largest element in current heap) with the last element of the heap.
+6. Remove the last element of the heap (which is now in the correct position). We mainly reduce heap size and do not remove element from the actual array.
+7. Heapify the remaining elements of the heap.Finally we get sorted array.
+8. The time is measured for increasing sizes of array in loop.
+9. Graph is plotted using matplotlib. 
 
+Time Complexity : O(n log n)  
 
+OUTPUT:   
+size : 10  time :1  
+size : 70  time :6  
+size : 490  time :90  
+size : 3430  time :713  
+size : 24010  time :5754  
+size : 168070  time :150720    
+size : 1176490  time :1.0916e+06  
+  
+
+Graph:    
+![Heapsort](https://github.com/user-attachments/assets/96c1bcd8-fa0a-4152-8b0d-d453835a720f)
 
 
 
