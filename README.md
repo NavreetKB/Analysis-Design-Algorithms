@@ -110,7 +110,9 @@ Grand dictionary:
 modA = 7.0  
 modB = 7.937253933193772  
 A.B=  38  
-consine =  0.6839357130643159  
+consine =  0.6839357130643159   
+
+   
 ## Lab - 02      Date: 30-01-2025    
  
 ### ------------------------- Program - 01 ---------------------------    
@@ -271,6 +273,91 @@ Graph:
 ![Heapsort](https://github.com/user-attachments/assets/96c1bcd8-fa0a-4152-8b0d-d453835a720f)
 
 
+
+## Lab - 03      Date: 06-02-2025    
+ 
+### ------------------------- Program - 01 ---------------------------  
+AIM : To solve Knapsack fractional problem using 3 approaches : 
+i) sorting by profit in non increasing order.    
+ii) sorting by weight in non decreasing order.    
+iii) sorting by profit per unit weight in non increasing order.   
+
+Knapsack fractional problem : given a set of items, holding weights and profit values, we have to determine the subset of the items to be added in a knapsack such that, the total weight of the items must not exceed the limit of the knapsack and its total profit value is maximum.
+
+WORKING :  
+We make a table for 15 items with 2 rows. First row holds profit values and 2nd row holds the weights.  
+
+A) sorting by profit in non increasing order:  
+1. using quicksort algorithm we sort the table(swapping elements in all rows together) as per profits in non increasing order.
+2. Then we traverse the table from start, and compare each weight with the available capacity.
+3. if the weight is less than available capacity we select it, if it is lesser we add the fraction of it which fulfills the capacity. Once the available capacity is zero we dont add anymore items.
+    ```
+        if(c<=0  || std::abs(c) < 1e-6){
+            result[i]=0;
+        }
+        else if(arr[1][i]<=c){
+           result[i]=1;
+           c=c-arr[1][i];
+        }
+        else if(c!=0){
+          float f=c/(arr[1][i]);
+          result[i]=f;
+          float fractionWt=(arr[1][i])*f;
+          c=c-fractionWt;
+        }
+     ```
+4. Once the entire table is traversed we get an array which holds values [0,1] as the ouput. 0 means item not selected, 1 means item taken with entire quantity and a fractional value indicating fractional quantity.
+
+
+B)sorting by weight in non decreasing order.   
+1. using quicksort algorithm we sort the table as per weights in non decreasing order.
+2. Then we traverse the table from start, and compare each weight with the available capacity.
+3. if the weight is less than available capacity we select it, if it is lesser we add the fraction of it which fulfills the capacity. Once the available capacity is zero we dont add anymore items.   
+4. Once the entire table is traversed we get an array which holds values [0,1] as the ouput. 0 means item not selected, 1 means item taken with entire quantity and a fractional value indicating fractional quantity.
+
+
+C)sorting by profit per unit weight in non increasing order. 
+1. Make a table with 3 rows : 1st for profits, 2nd for weights and 3rd for ratio of profit/weight.
+2. sort the table using quicksort (swapping elements in all rows together) as per the fraction profit/weight.
+3. Then we traverse the table from start, and compare each weight with the available capacity.
+4. if the weight is less than available capacity we select it, if it is lesser we add the fraction of it which fulfills the capacity. Once the available capacity is zero we dont add anymore items.   
+5. Once the entire table is traversed we get an array which holds values [0,1] as the ouput. 0 means item not selected, 1 means item taken with entire quantity and a fractional value indicating fractional quantity.
+
+OUTPUT :  
+```
+                          **************** Sorted by profit ******************   
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+PROFIT |  69   |  60   |  58   |  45   |  42   |  42   |  41   |  36   |  35   |  35   |  29   |  28   |  22   |  13   |   6   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+WEIGHT |  45   |  47   |  56   |  52   |  27   |   2   |  68   |  63   |  13   |  43   |  53   |  49   |  16   |  14   |  62   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+RESULT |   1   |   1   |0.14   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+                           **************** Sorted by Weight ******************
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+PROFIT |  42   |  35   |  13   |  22   |  42   |  35   |  69   |  60   |  28   |  45   |  29   |  58   |   6   |  36   |  41   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+WEIGHT |   2   |  13   |  14   |  16   |  27   |  43   |  45   |  47   |  49   |  52   |  53   |  56   |  62   |  63   |  68   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+RESULT |   1   |   1   |   1   |   1   |   1   |0.65   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+                         **************** Sorted by Profit per unit Weight ***************
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+PROFIT |  42   |  68   |  43   |  60   |  52   |  69   |  47   |  56   |  58   |  45   |  41   |  35   |  45   |  42   |   2   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+WEIGHT |   2   |  22   |  13   |  47   |  35   |  45   |  42   |  35   |  56   |  52   |  68   |  43   |  69   |  60   |  42   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+P/W    |  21   | 3.1   | 3.3   | 1.3   | 1.5   | 1.5   | 1.1   | 1.6   |   1   |0.87   | 0.6   |0.81   |0.65   | 0.7   |0.048  |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+RESULT |   1   |   1   |   1   |   1   |0.46   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+ ```
+
+By Profit	: 137.12	  
+By Weight	: 176.75	  
+By Profit per unit Weight	: 236.92    	
 
 
 
