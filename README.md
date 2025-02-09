@@ -147,7 +147,68 @@ GRAPH:
 ![magicsqare](https://github.com/user-attachments/assets/f6ed0571-abf0-4da7-a6c3-f733731a891a)
 
 
-### ------------------------- Program - 02 ---------------------------    
+    
+### ------------------------- Program - 02 --------------------------- 
+AIM: To analyse the time complexity of SELECTION SORT algorithm.  
+WORKING:  
+1. The array size and array elements are taken as user input.
+2. The outer loop (i) iterates from the first index to the last index of the array.
+3. For each iteration, the variable min is initialized to the current index i.
+4. The inner loop (j) runs from i + 1 to the last index of the array, searching for the smallest element.
+5. If a smaller element is found (arr[j] < arr[min]), the index min is updated.
+6. After the inner loop, the smallest element found is swapped with the element at index i.
+7. This process continues until the entire array is sorted.
+8. To measure time we have an initailising function which initialises an array of given size with random numbers.
+9. Start the timer and call the inerstion sort function 10 times in loop.
+10. stop the timer and get the average time by (end-start)/10.
+11. Repeat the same process in a loop and in each iteration multiply the size by 10.
+12. Get the values of sizes and corresponding times in arrays.Using matplotlib, plot the graph of array size vs time taken.
+
+ OUTPUT :  
+size : 10  time :0  
+size : 50  time :0  
+size : 250  time :0  
+size : 1250  time :2702.2  
+size : 6250  time :59889.9  
+size : 31250  time :1.29409e+006  
+
+Time Complexity : O(n^2)  
+Graph :  
+![Selectionsort](https://github.com/user-attachments/assets/4b6121bd-d733-4a68-a408-14aea59e505f)
+
+
+### ------------------------- Program - 03 --------------------------- 
+AIM: To analyse the time complexity of BUBBLE SORT algorithm.  
+WORKING:    
+1. The array size is taken as user input.
+2. An integer pointer arr is dynamically allocated to store the elements of the array.  
+3. The user is prompted to enter the elements of the array.    
+4. The outer loop (i) starts from the last index of the array down to 0.  
+5. The inner loop (j) iterates from the first element to the index i-1.  
+6. In the inner loop, if the current element (arr[j]) is greater than the next element (arr[j+1]), the two numbers are swapped.  
+7. This process continues until the outer loop completes, ensuring that the largest unsorted element moves to its correct position at the end of the array.
+8. To measure time we have an initailising function which initialises an array of given size with random numbers.
+9. Start the timer and call the inerstion sort function 10 times in loop.
+10. stop the timer and get the average time by (end-start)/10.
+11. Repeat the same process in a loop and in each iteration multiply the size by 10.
+12. Get the values of sizes and corresponding times in arrays. Using matplotlib, plot the graph of array size vs time taken.
+
+OUTPUT:  
+size : 10  time :0.1  
+size : 50  time :1.3  
+size : 250  time :29.6   
+size : 1250  time :615.6  
+size : 6250  time :9827.8   
+size : 31250  time :323853  
+
+Time Complexity : O(n^2)  
+Graph:  
+![Bubble](https://github.com/user-attachments/assets/b3b7fd81-4eb5-480c-902a-7a35198b2d4d)
+
+
+
+
+### ------------------------- Program - 04 ---------------------------    
 AIM : To analyse the time complexity of Insertion sort (best, average and worst case)    
 WORKING:    
 1. Insertion sort algorithm works by iteratively inserting each element of an unsorted list into its correct position in a sorted portion of the list.
@@ -180,7 +241,7 @@ GRAPH (Average Case):
 (best case):    
 ![bestIS](https://github.com/user-attachments/assets/b3fd51d1-22a5-4ae7-a1f2-5e61d0a9c148)
 
-### ------------------------- Program - 03 ---------------------------      
+### ------------------------- Program - 05 ---------------------------      
 AIM : To analyse the time complexity of Quick sort (best and average/worst case).  
 WORKING:  
 1. QuickSort is a sorting algorithm based on the Divide and Conquer that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.  
@@ -217,7 +278,7 @@ size : 3125  time :5.82058e+06
 size : 15625  time :1.61703e+08     
 ![QuickWC](https://github.com/user-attachments/assets/cc44b29c-5c20-401c-83a1-f909b2a243da)  
 
-### ------------------------- Program - 04 ---------------------------     
+### ------------------------- Program - 06 ---------------------------     
 AIM : To analyse and plot graph of time complexity of MergeSort algorithm.  
 WORKING:  
 1.  It works by recursively dividing the input array into smaller subarrays and sorting those subarrays then merging them back together to obtain the sorted array.
@@ -244,7 +305,7 @@ Graph:
 ![MergeSort](https://github.com/user-attachments/assets/d67dcb41-6f54-4ca0-a66c-c95b6b36f202)
 
 
-### ------------------------- Program - 05 ---------------------------   
+### ------------------------- Program - 07 ---------------------------   
 AIM : To analyse and plot graph of time complexity of HeapSort algorithm.  
 WORKING:    
 1. Heap sort is a comparison-based sorting technique based on Binary Heap Data Structure.
