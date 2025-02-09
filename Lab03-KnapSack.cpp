@@ -2,7 +2,9 @@
 #include<string>
 #include<random>
 #include<vector>
+#include<cstdlib> 
 #include<iomanip>
+#include <ctime>
 
 using namespace std;
 int partitionByWt(int arr[2][15], int s,int e){
@@ -135,13 +137,13 @@ float* knapPW(float arr[3][15],float c){
     }
        
     return result;
-}
+} 
 
 void initialise(int arr[2][15]){
     for(int i=0;i<2;i++)
     {
         for(int j=0;j<15;j++){
-            arr[i][j]=(rand()%100+1);
+            arr[i][j]=(rand()%80+1);
         }
     }
 }
@@ -150,15 +152,17 @@ int main(){
     // int arr[2][15]={{12,14,10,7,5,15,9,22,11,2,4,16,17,21,18},
     //                {2,35,7,15,5,7,3,10,11,12,7,3,6,8,22}};
     int arr[2][15]={0};
-    
+    srand(time(0));
+for(int i=0;i<10;i++){
+
+
     initialise(arr);
     int C=100;
-    int temp[2][7]={0};
+    int temp[2][15]={0};
     for(int i=0;i<2;i++){
-        for(int j=0;j<7;j++){
+        for(int j=0;j<15;j++){
             temp[i][j]=arr[i][j];
         }
-        
     }
 
     cout<<setw(80)<<"**************** Sorted by profit ******************\n";
@@ -276,9 +280,12 @@ int main(){
     for(int p=0;p<16;p++){
         cout<<"-------+";
     }
-
-    cout<<endl;
     
+    cout<<endl;
+}
     return 0;
 
 }
+
+
+
