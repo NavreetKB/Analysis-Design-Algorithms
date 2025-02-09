@@ -433,3 +433,62 @@ Ouput for 10 different sets of inputs
 | 9     | 173.00    | 138.00    |  175             |
 | 10    | 171.78    | 244.14    |  279.19          |
 
+### ---------------------  PROGRAM - 2 ---------------------
+AIM - To visualise the time complexity of binary search function by plotting a graph  
+WORKING -   
+1. Write a function for initialisation of an array of given size.  
+   The initialisation is done as per the values of i to ensure that the array is sorted.
+   ```
+   for( i=0 to size )
+    {arr[i]=i;}
+3. Write a function to perform Linear search on given array.
+4. Take the initial value of the size of array.
+5. Now for 7 iterations(or any number of iterations) make an array of the current size, start the timer, for 100 times call the
+   initialisation  function, call linear search function with this array. After 100 iterations get the end time.
+   ```
+   size=100;
+   for( int i: 0 to 7)
+   {
+     store this size in an array
+    initialse(array,size);
+     start the timer
+     for(int j : 0 to 100)
+      {
+        binarysearch(array, element)
+      }
+      end timer;
+      avg = end-start/100;
+      store avg time in an array
+      size=size*7;
+   }
+   ```
+6. Get the average time duration for one search (end-start)/100.  
+7. Store this size and duration in respective arrays.  
+8. After each iteration increase the array size by 10 times.  
+9. Store this data of array sizes and duration in a csv file.  
+10. Read this file in a pyhton program that uses pandas and matpotlib.pyplot and plot a graph .  
+11. Use numpy to get a graph of log as well.  
+12. The best case complexity corresponds to the search element arr[mid] and the worst case complexity is when search element is
+ arr[size];
+
+  
+OUTPUT-  
+size of array=  50   average time is 36.7  
+size of array=  500   average time is 47.8    
+size of array=  5000   average time is 62.1    
+size of array=  50000   average time is 85.7    
+size of array=  500000  average time is 104.2    
+size of array=  5000000   average time is 144.1    
+size of array=  50000000   average time is 153.2    
+  
+size, Time  
+50 , 36.7    
+500 , 47.8    
+5000 , 62.1    
+50000 , 85.7     
+500000 , 104.2     
+5000000 , 144.1    
+50000000 , 153.2     
+![image](https://github.com/user-attachments/assets/7d77abdd-e6e7-4d11-8733-72c96a8904b6)
+
+
