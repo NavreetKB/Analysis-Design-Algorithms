@@ -492,3 +492,77 @@ size, Time
 ![image](https://github.com/user-attachments/assets/7d77abdd-e6e7-4d11-8733-72c96a8904b6)
 
 
+## Lab - 04      Date: 13-02-2025    
+ 
+### ------------------------- Program - 01 ---------------------------
+AIM : to perform matrix multiplication using divide and conquer approach.  
+WORKING:  
+1. Take the dimension of matrices as input from user.
+2. The initialise function initialises the matrices of given size with random values.
+3. The matrix function takes the 2 input matrices, the output matrix and 8 arguments corresponding to the starting row index, ending row index, starting column index, ending column index of both matrices.
+4. DIVISION : we find out the midrow and mid column indices for both matrices and divide 1 matrix into 4 submatrices of size n/2 by n/2.
+5. The base case of recursion is when the matrix is of 2 by 2 size. The multiply function is called then. Which multiplies the 2*2 submatirces of both M1 and M2.
+    ```
+      for(int i=0;i<2;i++){
+        for(int j=0;j<2;j++){
+            for(int k=0;k<2;k++){
+                mat3[startrow1+i][startcol2+j]+=((mat1[startrow1+i][startcol1+k])*(mat2[startrow2+k][startcol2+j]));
+            }
+        }
+    }
+
+6. If a matrix is divided into 4 parts each of size 2 by 2 then we (multiply topleft matrices of both) + (top right of M1*bottom left of M2) gives us the top left matix of final matrix.
+8. The recursive calls are made 8 times ( since we have 4 equations with 2 arguments for addition each).
+9. The final matrix is displayed as result.
+
+OUTPUT : 
+enter number of rows and columns of matrix1 8 8
+enter number of rows and columns of matrix2 8 8
+```
+elements of matrix1
+2   8   15  1   10  5   19  19  
+3   5   6   6   2   8   2   12  
+16  3   8   17  12  5   3   14  
+13  3   2   17  19  16  8   7  
+12  19  10  13  8   20  16  15  
+4   12  3   14  14  5   2   12  
+14  9   8   5   3   18  18  20  
+4   2   10  19  17  16  11  3  
+
+elements of matrix2
+
+9   7   1   3   5   9  7   6  
+11  10  11  11  7   2  14  9  
+10  4   5   15  17  1  7   17  
+12  9   5   20  7   4  18  19  
+19  3   10  2   14  16 20  19  
+5   11  18  7   14  7  2   6  
+5   13  11  10  18  14 18  13   
+7   11  2   17  16  8  16  15  
+Resutant matrix
+711   704   607  907   1184  666  1105  1110  
+386   401   328  558   562   279  525   571  
+827   611   445  868   872   607  1044  1089  
+904   696   721  791   985   777  1121  1128  
+1010  1048  982  1226  1374  820  1382  1365
+751   541   497  756   747   502  987   951
+742   926   770  1013  1242  758  1110  1095  
+865   662   756  871   1045  688  1086  1180
+```
+Time Complexity= O(n^3)
+Space Complexity =O(n)
+
+GRAPH:   
+
+![matrix](https://github.com/user-attachments/assets/66b7539a-3f2b-4fa8-ab80-a7e60704171a)
+
+
+
+
+
+
+
+
+
+
+
