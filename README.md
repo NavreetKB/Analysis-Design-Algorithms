@@ -556,13 +556,86 @@ GRAPH:
 
 ![matrix](https://github.com/user-attachments/assets/66b7539a-3f2b-4fa8-ab80-a7e60704171a)
 
+<br><br><br>
+### ------------------------- Program - 02 ---------------------------
+AIM : To find if a point is in interior of a triangle or not.  
+WORKING:  
+1. Take three points' coordinates as input from the user.
+2. The determinant function calculates the determinant of a 3 by 3 matrix. The first column correspinds to 1st point and second column has coordinates of 2nd point (clockwise manner).
+3. if the point lies to the left of a line then the determinant returns a positive value else a negative value.
+4. We check the point with each line of triangle and if it lies to the right of each line in taken clockwise manner then the point lies in interior of the triangle.
+
+OUTPUT:  
+*************** Triangle ABC *****************  
+enter the coordinates of A -3 -5  
+enter the coordinates of B 5 9  
+enter the coordinates of C 15 5   
+enter the coordinates of D 2 2  
+Point D is an interior point of triangle ABC  
+
+*************** Triangle ABC *****************  
+enter the coordinates of A 1 1  
+enter the coordinates of B 4 5  
+enter the coordinates of C 8 1  
+enter the coordinates of D -3 2  
+Point D is an exterior point of triangle ABC  
+
+![Screenshot 2025-02-21 220256](https://github.com/user-attachments/assets/5a0d0ee0-eaad-44c2-82f8-96e6220dc544)
 
 
+Time complexity : O(n^3) since n is fixed= 3, therefore O(1)  
+space complexity : O(1)
 
+<br><br><br>
 
+### ------------------------- Program - 03 ---------------------------
+AIM : to implement iterative quicksort.  
+WORKING:  
+1. QuickSort is a sorting algorithm that follows the divide-and-conquer approach. Unlike the recursive version, the iterative version uses a stack to manage subarrays.
+2. Choose a pivot element, usually the first element of the subarray.
+3. Partition the array according to the pivot element.  
+4. The smaller array is processed first and the starting and ending points of larger subaray are pushed onto stack.
+5. After processing smaller subarrays the larger ones are popped out of stack and sorted.
+6. The loop stops when the stack is empty.
 
+OUTPUT:  
+enter the size of array 7  
+enter the array 2 6 3 -7 2 0 2  
+sorted array  
+-7  0  2  2  2  3  6  
 
+Time complexity : O(nlogn)  
+Space complexity : O(n)
 
+<br><br><br>
 
+### ------------------------- Program - 04 ---------------------------  
+AIM : To find the maximum and minimum element from an array using divide and conquer.   
+WORKING:  
+1. If the array has only one element, return it as both the maximum and minimum.  
+2. Find the middle index of the array.  
+3. Recursively call the function for the left half of the array.  
+4. Recursively call the function for the right half of the array.  
+5. Compare the maximum values from both halves and store the larger one.  
+6. Compare the minimum values from both halves and store the smaller one.  
+7. Return the final maximum and minimum values.
 
+OUTPUT :  
+enter no. of elements in array 8  
+1 2 5 11 9 -5 3 2  
+maxmum element 11  
+minimum element -5  
+
+Time complexity : O(n)  
+space complexity : O(n)  
+
+<br><br><br>
+### ------------------------- Program - 05 --------------------------- 
+AIM : to implement quickhull algorithm and finding the convex hull points with divide and conquer approach.  
+WORKING : 
+1. The function determinant(int **mat, int n) computes the determinant of an n × n matrix.
+2. The function LeftRightcheck determines whether p3 is to the left or right of the line formed by p1 and p2 by using determinant value.
+3. We first find the horizontally farthest points by finding leftmost and rightmost points. This gives us a division line. Add these points to hull.
+4. divide the points around this line into left and right sets by using determinant logic.
+5. In each set, find the point farthest point from the line and add it to hull.
 
