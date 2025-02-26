@@ -637,5 +637,99 @@ WORKING :
 2. The function LeftRightcheck determines whether p3 is to the left or right of the line formed by p1 and p2 by using determinant value.
 3. We first find the horizontally farthest points by finding leftmost and rightmost points. This gives us a division line. Add these points to hull.
 4. divide the points around this line into left and right sets by using determinant logic.
-5. In each set, find the point farthest point from the line and add it to hull.
+5. Once the first division is done, we call the QuickHullRec function once for each side i.e. left and right.
+6. In the passed set of points (left or right points) we find the point farthest from the division line. Push this farthest point into Hull as well.
+7. Again create two sets of left and right points, once wrt to the p1 point of division line and the farthest point, and once wrt to p2 point of division line and fathest point.
+8. Now we have two sets of left points (we do not take right side points here as they will be interior to the triangle of p1,p2 and farthest).
+9. Recursively call the same function twice once with each division line (at each division we keep getting two partition lines).
+10. Base case occurs when the vector containg the points of a side becomes empty.
+
+OUTPUT :  
+Enter number of points: 15  
+The points are:  
+ -9,  -3  
+  4, -10   
+ -1,  -6  
+  8,   8  
+ -8,  -6   
+ -5,  -5  
+ -9,  -3   
+ -9,   1  
+  5,  -8  
+ -3,   6  
+  1,  -6  
+ -8,   3  
+  2,  -8   
+ -9,   6  
+  8,   5  
+  
+Convex Hull Points:  
+-9, -3  
+8, 8  
+4, -10  
+-8, -6  
+5, -8   
+8, 5   
+-9, 6  
+Graphs:  
+![Screenshot 2025-02-21 214605](https://github.com/user-attachments/assets/21872ebd-9cd7-403e-bbb1-d17861c40c6f)
+
+![{2C225BB0-D1F6-4364-94BF-812F5BDA577C}](https://github.com/user-attachments/assets/787ef549-d667-422b-9054-275a1848b17f)
+
+Time Complexity : O(n^3)  
+Space complexity : O(n^2)
+
+<br><br><br>
+
+### ------------------------- Program - 06 ---------------------------   
+AIM : To find all possible triangles with given n points from user.  
+WORKING:  
+1. Take the number of points as input from user.
+2. Take n point coordinates either as input or generate randomly in specified range using rand() function.
+3. The distance function calculates the distance between two points and returns the distance.
+4. We keep the points in form a vector of pairs.
+5. We keep selecting 3 points from the set and find the distances among the 3 points.If there are duplicate points they are detected and not considered for triangle.
+6. Using the triangle inequality we check if points are collinear or not as collinear points will not form a triangle.
+   ```
+   if(d1==0 || d2==0 || d3==0)
+                    continue;
+   if((d1+d2>d3) && (d1+d3>d2) && (d2+d3>d1))
+          cout<<"points ("<<points[i].first<<","<<points[i].second<<") , ("<<points[j].first<<","<<points[j].second<<") , ("<<points[k].first<<","<<points[k].second<<") form a triangle "<<endl;
+   ```
+7. The coordinates of each triangle are printed.
+
+OUTPUT:  
+enter the number of points 4  
+points are   
+-4,2  
+-1,-5  
+4,-1  
+3,3  
+points (-4,2) , (-1,-5) , (4,-1) form a triangle   
+points (-4,2) , (-1,-5) , (3,3) form a triangle   
+points (-4,2) , (4,-1) , (-1,-5) form a triangle   
+points (-4,2) , (4,-1) , (3,3) form a triangle   
+points (-4,2) , (3,3) , (-1,-5) form a triangle   
+points (-4,2) , (3,3) , (4,-1) form a triangle   
+points (-1,-5) , (-4,2) , (4,-1) form a triangle   
+points (-1,-5) , (-4,2) , (3,3) form a triangle   
+points (-1,-5) , (4,-1) , (-4,2) form a triangle   
+points (-1,-5) , (4,-1) , (3,3) form a triangle   
+points (-1,-5) , (3,3) , (-4,2) form a triangle   
+points (-1,-5) , (3,3) , (4,-1) form a triangle   
+points (4,-1) , (-4,2) , (-1,-5) form a triangle   
+points (4,-1) , (-4,2) , (3,3) form a triangle   
+points (4,-1) , (-1,-5) , (-4,2) form a triangle  
+points (4,-1) , (-1,-5) , (3,3) form a triangle   
+points (4,-1) , (3,3) , (-4,2) form a triangle     
+points (4,-1) , (3,3) , (-1,-5) form a triangle   
+points (3,3) , (-4,2) , (-1,-5) form a triangle   
+points (3,3) , (-4,2) , (4,-1) form a triangle  
+points (3,3) , (-1,-5) , (-4,2) form a triangle   
+points (3,3) , (-1,-5) , (4,-1) form a triangle  
+points (3,3) , (4,-1) , (-4,2) form a triangle   
+points (3,3) , (4,-1) , (-1,-5) form a triangle   
+
+Time complexity : O(n^3) 
+Space complexity : O(n)  
 
