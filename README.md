@@ -597,6 +597,7 @@ WORKING:
 4. The smaller array is processed first and the starting and ending points of larger subaray are pushed onto stack.
 5. After processing smaller subarrays the larger ones are popped out of stack and sorted.
 6. The loop stops when the stack is empty.
+7. This algorithm improves stack space usage in recusrsion as in worst case of recursive quicksort ( 1 and n-1 division ) the stack space need is O(n) whereas here it will never require more than O(logn) and in worst case it may remain almost constant as indices are popped out just after being pushed.
 
 OUTPUT:  
 enter the size of array 7  
@@ -605,7 +606,10 @@ sorted array
 -7  0  2  2  2  3  6  
 
 Time complexity : O(nlogn)  
-Space complexity : O(n)
+Space complexity : O(logn)
+GRAPH OF SPACE COMPLEXITY :  
+![Screenshot 2025-03-09 160813](https://github.com/user-attachments/assets/6eea49b2-0ade-40d7-9514-ca2367520b56)
+
 
 <br><br><br>
 
@@ -732,4 +736,162 @@ points (3,3) , (4,-1) , (-1,-5) form a triangle
 
 Time complexity : O(n^3) 
 Space complexity : O(n)  
+
+
+
+
+## Lab - 05      Date: 27-02-2025    
+ 
+### ------------------------- Program - 01 ---------------------------
+AIM : To implement activity selection using Greedy approach   
+i) Selection by sorting start times in non decreasing order  
+ii) selection by sorting finish times in non decreasing order
+iii) selection by sorting duration in non decreasing order  
+
+WORKING :  
+1. We have a table with job ids, their start times and finish times.
+2. ### Feasibilty : to finish the jobs within the time limit (here 24 hrs)
+   ### Objective function : To complete maximum no. of jobs
+3. APPROACH 1 : sort the given table by start times in non decreasing order using quicksort.
+4. then select a job in order from the sorted table and check for feasibility
+     ```
+      if(c >=(arr[2][i]-arr[1][i]) && arr[1][i] >= prev_finish){
+            result[i]=arr[0][i];
+            prev_finish=arr[2][i];
+            c-=(arr[2][i]-arr[1][i]); }
+     ```
+5. If it satisfies the feasibility criteria then add it to result otherwise check next jobs.
+6. APPROACH 2 : sort the given table by finish times in non decreasing order using quicksort.
+7. then select a job in order from the sorted table and check for feasibility, if it satisfies the feasibility criteria then add it to result otherwise check next jobs.
+8. APPROACH 3: sort the given table by duration in non decreasing order using quicksort.
+9. then select a job in order from the sorted table and check for feasibility, if it satisfies the feasibility criteria then add it to result otherwise check next jobs.
+10. Comparison shows that the 2nd approach (sorting finish times in non decreasing orders) gives maximum profit.
+
+OUTPUT :  
+```
+  ORIGINAL TABLE  
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+  JOBS |   0   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   |  10   |  11   |  12   |  13   |  14   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+ START |  18   |   9   |  10   |   1   |   6   |   1   |   5   |   2   |   5   |  20   |   7   |  15   |  16   |  10   |   7   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+ FINISH|  19   |  10   |  15   |  20   |  11   |   7   |  13   |  14   |   8   |  21   |  12   |  16   |  19   |  11   |  23   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+                            ********************** Sorting by start time ************************* 
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+  JOBS |   5   |   3   |   7   |   6   |   8   |   4   |  14   |  10   |   1   |   2   |  13   |  11   |  12   |   0   |   9   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+ START |   1   |   1   |   2   |   5   |   5   |   6   |   7   |   7   |   9   |  10   |  10   |  15   |  16   |  18   |  20   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+ FINISH|   7   |  20   |  14   |  13   |   8   |  11   |  23   |  12   |  10   |  15   |  11   |  16   |  19   |  19   |  21   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+Result : 
+J5   J14   
+No. of jobs executed : 2
+
+                           ********************** Sorting by Finish time *************************
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+  JOBS |   5   |   8   |   1   |   4   |  13   |  10   |   6   |   7   |   2   |  11   |   0   |  12   |   3   |   9   |  14   |  
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
+ START |   1   |   5   |   9   |   6   |  10   |   7   |   5   |   2   |  10   |  15   |  18   |  16   |   1   |  20   |   7   |  
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
+ FINISH|   7   |   8   |  10   |  11   |  11   |  12   |  13   |  14   |  15   |  16   |  19   |  19   |  20   |  21   |  23   |  
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+Result :
+J5   J1   J13   J11   J0   J9
+No. of jobs executed : 6
+                                     **************** Sorted by Duration ***************
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
+   JOB |   1   |  13   |  11   |   9   |   0   |  12   |   8   |   2   |   4   |  10   |   5   |   6   |   7   |  14   |   3   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
+ START |   9   |  10   |  15   |  20   |  18   |  16   |   5   |  10   |   6   |   7   |   1   |   5   |   2   |   7   |   1   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
+ FINISH|  10   |  11   |  16   |  21   |  19   |  19   |   8   |  15   |  11   |  12   |   7   |  13   |  14   |  23   |  20   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
+ DURATION| 1   |   1   |   1   |   1   |   1   |   3   |   3   |   5   |   5   |   5   |   6   |   8   |  12   |  16   |  19   |
+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
+Result :
+J1   J13   J11   J9
+No. of jobs executed : 4
+
+```
+
+Ouput for different sets of inputs  
+| S.no. | By start time| By Finish time | By duration |
+|-------|-----------|-----------|------------------|
+| 1     |2     | 6    |  4         |
+| 2     |4    | 6   |  2            |
+| 3     | 7      | 9       |  3         |
+| 4     | 2    | 7     |  4           |
+| 5     | 4   | 6    |  2          |
+| 6     | 3    | 6   |  4          |
+| 7    | 3    | 6   |  1          |
+| 8     | 3    | 5   | 1          |
+| 9     | 5    | 6   |  2          |
+| 10     | 4    | 6   |  3          |
+
+Timecomplexity = O(nlogn) for sorting O(n) for greedy approach ,hence O(nlogn)
+Space complexity =O(n)
+
+
+
+
+### ------------------------- Program - 02 ---------------------------  
+AIM : to implement Dijkstra's algorithm for single source shortest path and trace the shortest path from source to destination.  
+WORKING :  
+1. Take the graph as input from user. It is stored in an adjacency matrix.
+2. Dist is a 1D array that has indices corresponding to vertices and stores minimum distance of each vertex from source. Visited is a 1d boolean array.
+3. Path is a 1D array that stores the preceeding vertex from which current vertex is reached.
+4. Initialise distances of vertices as weight of edge between that vertex and source (if no edge between v and src then dist is infinity).Visited of source vertex is set to true and its dist is set to 0. 
+5. for remaining  vertices , find a non visited vertex whose dist is minimum. let it be u
+6. visited[u] is set to true and all other vertices are checked as follows :
+    ```
+      if(dist[i]> dist[min_ind]+adj[min_ind][i]){
+                dist[i]=dist[min_ind]+adj[min_ind][i];
+                path[i]=min_ind;
+        }
+    ```
+7. This loop continues until all vertices are visited.
+8. Path is backtracked from current vertex to all subsequent preceeding vertices until source vertex is reached.
+
+OUTPUT :  
+![image](https://github.com/user-attachments/assets/80f37328-141e-407a-9e06-b2ecc6ddcaa8)     
+
+enter no. of vertices 6  
+enter no. of edges 8    
+enter source :0    enter destination :1   enter edge weight :7    
+enter source :0    enter destination :2   enter edge weight :12  
+enter source :1    enter destination :3   enter edge weight :9  
+enter source :1    enter destination :2   enter edge weight :2  
+enter source :2    enter destination :4   enter edge weight :10  
+enter source :4    enter destination :3   enter edge weight :4  
+enter source :4    enter destination :5   enter edge weight :5  
+enter source :3    enter destination :5   enter edge weight :1  
+edge 0 to 0 : 0  edge 0 to 1 : 7  edge 0 to 2 : 12  edge 0 to 3 : 32767  edge 0 to 4 : 32767  edge 0 to 5 : 32767  
+edge 1 to 0 : 32767  edge 1 to 1 : 0  edge 1 to 2 : 2  edge 1 to 3 : 9  edge 1 to 4 : 32767  edge 1 to 5 : 32767    
+edge 2 to 0 : 32767  edge 2 to 1 : 32767  edge 2 to 2 : 0  edge 2 to 3 : 32767  edge 2 to 4 : 10  edge 2 to 5 : 32767  
+edge 3 to 0 : 32767  edge 3 to 1 : 32767  edge 3 to 2 : 32767  edge 3 to 3 : 0  edge 3 to 4 : 32767  edge 3 to 5 : 1  
+edge 4 to 0 : 32767  edge 4 to 1 : 32767  edge 4 to 2 : 32767  edge 4 to 3 : 4  edge 4 to 4 : 0  edge 4 to 5 : 5    
+edge 5 to 0 : 32767  edge 5 to 1 : 32767  edge 5 to 2 : 32767  edge 5 to 3 : 32767  edge 5 to 4 : 32767  edge 5 to 5 : 0  
+minimum distance (0th to nth node): 17  
+path from 0 to 5th node :   
+5 <-- 3 <-- 1 <-- 0   
+
+
+Time Complexity : O(n^2)
+space complexity : O(n^2)  
+
+
+
+
+
+
+
+
+
+
+
 
