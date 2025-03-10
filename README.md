@@ -750,8 +750,8 @@ iii) selection by sorting duration in non decreasing order
 
 WORKING :  
 1. We have a table with job ids, their start times and finish times.
-2. ### Feasibilty : to finish the jobs within the time limit (here 24 hrs)
-   ### Objective function : To complete maximum no. of jobs
+2. Feasibilty : to finish the jobs within the time limit (here 24 hrs)
+   Objective function : To complete maximum no. of jobs
 3. APPROACH 1 : sort the given table by start times in non decreasing order using quicksort.
 4. then select a job in order from the sorted table and check for feasibility
      ```
@@ -780,7 +780,6 @@ OUTPUT :
 
                             ********************** Sorting by start time ************************* 
 -------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-
   JOBS |   5   |   3   |   7   |   6   |   8   |   4   |  14   |  10   |   1   |   2   |  13   |  11   |  12   |   0   |   9   |
 -------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
  START |   1   |   1   |   2   |   5   |   5   |   6   |   7   |   7   |   9   |  10   |  10   |  15   |  16   |  18   |  20   |
@@ -793,7 +792,6 @@ No. of jobs executed : 2
 
                            ********************** Sorting by Finish time *************************
 -------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-
   JOBS |   5   |   8   |   1   |   4   |  13   |  10   |   6   |   7   |   2   |  11   |   0   |  12   |   3   |   9   |  14   |  
 -------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+  
  START |   1   |   5   |   9   |   6   |  10   |   7   |   5   |   2   |  10   |  15   |  18   |  16   |   1   |  20   |   7   |  
@@ -858,7 +856,9 @@ WORKING :
 8. Path is backtracked from current vertex to all subsequent preceeding vertices until source vertex is reached.
 
 OUTPUT :  
-![image](https://github.com/user-attachments/assets/80f37328-141e-407a-9e06-b2ecc6ddcaa8)     
+![Picture1](https://github.com/user-attachments/assets/041dfda3-9e91-42b9-9647-14155d4a7342)
+
+    
 
 enter no. of vertices 6  
 enter no. of edges 8    
@@ -887,7 +887,56 @@ space complexity : O(n^2)
 
 
 
+ 
 
+### ------------------------- Program - 03 ---------------------------  
+AIM : To implement Strassen's matrix multiplication algorithm.  
+WORKING:  
+1. Take the sizes of matrices as input from users. Discard any invalid dimensions (c1 != r2 ) and ensure the dimensions are in powers of 2.
+2. The matrices have been initialised by random numbers.
+3. Add function adds two matrices in O(n^2) time and sub function subtracts them in O(n^2) time.
+4. Conventional function multiplies two matrices of 2 by 2 size hence takes constant time .
+5. In strassen function , we divide each of the input matrices into 4 submatrices of dimension n/2 by n/2.
+6. Using strassen's equations we calculate Matrices P,Q,R,S,T,U,V and then C11,C12,C21,C22.
+  ```
+    vector<vector<int>> P = strassen(add(A11, A22, n/2), add(B11, B22, n/2), n/2);
+    vector<vector<int>> Q = strassen(add(A21, A22, n/2), B11, n/2);
+    vector<vector<int>> R = strassen(A11, sub(B12, B22, n/2), n/2);
+    vector<vector<int>>S = strassen(A22, sub(B21, B11, n/2), n/2);
+    vector<vector<int>> T = strassen(add(A11, A12, n/2), B22, n/2);
+    vector<vector<int>> U = strassen(sub(A21, A11, n/2), add(B11, B12, n/2), n/2);
+    vector<vector<int>> V = strassen(sub(A12, A22, n/2), add(B21, B22, n/2), n/2);
+  ```
+
+7. The C11,C12,C21,C22 are then combined into 1 matrix C and returned.
+8. To compare complexity we have evaluated it 6 times each with a next power of 2 and recorded times.
+9. The array size vs time graph shows how the compelxity has reduced from n^3 to n^2.81.
+10. As evident, we have used 7 multiplications and 18 additions.
+
+OUTPUT :  
+```
+enter number of rows and columns of matrix1 4 4
+enter number of rows and columns of matrix2 4 4
+Matrix A : 
+    16    11    17     8
+    10    18     8     3
+     1    15     6    17
+    15     1     2    17
+Matrix B : 
+    12    17     5     4
+    14    12    14    11
+     2     7    15     3
+    14     1     7     9
+Resultant matrix C :
+   492   531   545   308
+   430   445   443   289
+   472   256   424   340
+   436   298   238   230
+```
+Sizes : 2, 4, 8, 16, 32, 64, 128   
+Times : 2, 49, 378, 2265, 17893, 113186, 1.07008e+06 (microseconds)  
+GRAPH:  
+![image](https://github.com/user-attachments/assets/c0691fe1-8ee1-4382-8a41-d1165924bd05)
 
 
 
