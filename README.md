@@ -941,6 +941,239 @@ GRAPH:
 
 
 
+## Lab - 06      Date: 20-03-2025    
+ 
+### ------------------------- Program - 01 ---------------------------
+AIM : Implementation of Kruskal's algorithm.  
+WORKING:  
+1. A minimum spanning tree (MST) or minimum weight spanning tree for a weighted, connected, and undirected graph is a spanning tree (no cycles and connects all vertices) that has minimum weight.
+2. In kruskal's algorithm we first sort the edgelist ( array of structures) in non decreasing order.
+3. We create a min heap of edges using minheap and heapify function.
+4. No extract the topmost (min weight ) node from the minheap and add it to MST if it does not generate a cycle.
+5. Cycle detection is implemented using Disjoint usion and find algorithms.
+6. To detect cycle we find the topmost parent of both the endpoints and if both parents are different ,we unite them and add the edge to MST.
+7. Otherwise, if both nodes map to same parent then there exists a cycle and that edge must be discarded.
+8. This loop continues until n-1 edges have been included or minheap is empty.
+9. Note that in case of disjoint graph we will not be getting n-1 edges in the resultant graph hence we may conclude that MST does not exist in that case.
+
+OUTPUT :    
+enter no. of vertices in graph : 9  
+enter no. of edges in graph : 14  
+ Enter 1st vertex, 2nd vertex, and weight: 0 1 4  
+ Enter 1st vertex, 2nd vertex, and weight: 0 7 8  
+ Enter 1st vertex, 2nd vertex, and weight: 1 2 8  
+ Enter 1st vertex, 2nd vertex, and weight: 7 6 1  
+ Enter 1st vertex, 2nd vertex, and weight: 7 8 7  
+ Enter 1st vertex, 2nd vertex, and weight: 6 8 6  
+ Enter 1st vertex, 2nd vertex, and weight: 2 8 2  
+ Enter 1st vertex, 2nd vertex, and weight: 2 3 7  
+ Enter 1st vertex, 2nd vertex, and weight: 6 5 2  
+ Enter 1st vertex, 2nd vertex, and weight: 1 7 11  
+ Enter 1st vertex, 2nd vertex, and weight: 3 5 14  
+ Enter 1st vertex, 2nd vertex, and weight: 2 5 4  
+ Enter 1st vertex, 2nd vertex, and weight: 3 4 9  
+ Enter 1st vertex, 2nd vertex, and weight: 5 4 10  
+Tree :  
+7 to 6  
+6 to 5  
+2 to 8  
+0 to 1  
+2 to 5  
+2 to 3   
+0 to 7    
+3 to 4   
+GRAPH :  
+![Screenshot 2025-03-30 122852](https://github.com/user-attachments/assets/1c72587e-849d-467c-8392-8eb9b827e77c)
+
+MST  :  
+![kruskalMST](https://github.com/user-attachments/assets/9ed0da10-5a08-4af5-9838-738e431ea954)
+
+For a DISCONNECTED GRAPH :  
+![Screenshot 2025-03-30 121759](https://github.com/user-attachments/assets/41be067e-07c9-434c-8032-6fde833d5ece)  
+OUTPUT :    
+enter no. of vertices in graph : 7  
+enter no. of edges in graph : 8  
+ Enter 1st vertex, 2nd vertex, and weight: 0 1 8  
+ Enter 1st vertex, 2nd vertex, and weight: 0 2 5  
+ Enter 1st vertex, 2nd vertex, and weight: 1 2 9  
+ Enter 1st vertex, 2nd vertex, and weight: 1 3 11  
+ Enter 1st vertex, 2nd vertex, and weight: 2 4 10  
+ Enter 1st vertex, 2nd vertex, and weight: 2 3 15  
+ Enter 1st vertex, 2nd vertex, and weight: 3 4 7  
+ Enter 1st vertex, 2nd vertex, and weight: 5 6 3  
+spanning tree does not exist   
+
+Time complexity : O(E log E)  
+Space complexity : O(V²)  
+![Screenshot 2025-03-30 192236](https://github.com/user-attachments/assets/10b3cd28-1fcd-4987-819d-5a6ea68287b3)
+
+### ------------------------- Program - 02 ---------------------------
+AIM : To implement Prim's algorithm to find MST of a graph input by user.  
+WORKING:  
+1. Prim's algorithm is a greedy algorithm that finds a minimum spanning tree (MST) for a weighted undirected graph.
+2. The algorithm starts by visisting the minimum weight edge of the graph (k,l).
+3. It maintains a set of visited nodes and a set of edges that connect visited nodes to unvisited nodes.
+4. In this code, the 'cost' matrix represents the adjacency matrix of the graph, and 'edges' is a vector of edges with their weights.
+5. The 'Prims' function implements Prim's algorithm.
+6. First, it finds the minimum weight edge in the graph and adds it to the MST. This is done by finding the minimum value in the 'cost' matrix.
+7. The 'near' vector is used to keep track of the closest visited node to each unvisited node.
+8. The algorithm then iterates through the unvisited nodes, selecting the node with the minimum weight edge to a visited node.
+9. This selected node and its corresponding edge are added to the MST, and the 'near' vector is updated.
+10. The 'tree' vector stores the edges of the MST.
+11. The 'minwt' variable keeps track of the total weight of the MST.
+12. The algorithm continues until all nodes are visited, or until n-1 edges have been added to the MST.
+13. Finally, the MST and its total weight are printed.
+14. The 'main' function reads the graph's vertices, edges, and weights from the user, and then calls the 'Prims' function to find the MST.
+15. The adjacency matrix is then printed.
+
+OUTPUT :    
+enter no. of vertices : 9  
+enter no. of edges : 14  
+enter source, destination and weight : 0 1 4   
+enter source, destination and weight : 0 7 8   
+enter source, destination and weight : 1 7 11   
+enter source, destination and weight : 7 6 1   
+enter source, destination and weight : 1 2 8   
+enter source, destination and weight : 2 8 2   
+enter source, destination and weight : 7 8 7  
+enter source, destination and weight : 6 8 6   
+enter source, destination and weight : 2 3 7   
+enter source, destination and weight : 2 5 4   
+enter source, destination and weight : 6 5 2   
+enter source, destination and weight : 3 5 14   
+enter source, destination and weight : 5 4 10   
+enter source, destination and weight : 3 4 9   
+
+Minimum spanning tree :  
+```
+---------  
+| 6 | 7 |  
+---------  
+| 5 | 6 |  
+---------  
+| 2 | 5 |  
+---------  
+| 8 | 2 |  
+---------  
+| 3 | 2 |  
+---------  
+| 0 | 7 |   
+---------   
+| 1 | 0 |  
+---------  
+| 4 | 3 |
+```
+Minimum weight : 37  
+GRAPH :  
+![Screenshot 2025-03-30 122852](https://github.com/user-attachments/assets/f694ac94-4ae3-438e-a664-98aefd42a691)
+
+MST :  
+![Screenshot 2025-03-30 123559](https://github.com/user-attachments/assets/6c0e273c-e1d0-4ad2-9bc2-2b2c97e4794d)
 
 
+Time complexity : O(v^2)  
+Space complexity : O(v^2)    
+![Screenshot 2025-03-30 193709](https://github.com/user-attachments/assets/cfd633c0-51eb-42b9-af74-72f90cdc147d)
 
+
+ 
+## Lab - 07      Date: 27-03-2025    
+ 
+### ------------------------- Program - 01 ---------------------------
+AIM : To implement knapsack 0/1 problem's solution using dynamic programming approach.  
+WORKING :  
+1. The knapsack01 function takes profit, weights, capacity, and number of items as input.
+2. It creates a 2D table table of size (n+1) x (capacity+1) to store the maximum profit for each subproblem.
+3. The table is initialized with 0 for the first row and column, representing the base cases.
+4. The function then iterates through the table, filling it using the following rules:
+5. If the current item's weight is less than or equal to the current capacity, the maximum profit is the maximum of:
+    a. The profit of including the current item plus the maximum profit for the remaining capacity and previous items.
+    b. The maximum profit for the previous items without including the current item.
+6. If the current item's weight is greater than the current capacity, the maximum profit is the same as the maximum profit for the previous items.
+7. After filling the table, the function prints the table.
+8. It then backtracks through the table to find the selected items that contribute to the maximum profit.
+9. The selected items are stored in the selectedItems vector.
+10. The function prints the selected items and the maximum profit.
+11. The main function takes the number of items and capacity as input.
+12. It then takes the profit and weight for each item as input.
+13. It prints the original table of profits and weights.
+14. Finally, it calls the knapsack01 function to solve the problem and print the results.
+
+OUTPUT :    
+enter no. of items : 4  
+enter capacity : 8  
+enter profit and weight for P0 : 1 2  
+enter profit and weight for P1 : 2 3  
+enter profit and weight for P2 : 5 4  
+enter profit and weight for P3 : 6 5  
+Original Table :  
+```
+-------+-------+-------+-------+-------+
+PROFIT |   1   |   2   |   5   |   6   |
+-------+-------+-------+-------+-------+
+WEIGHT |   2   |   3   |   4   |   5   |
+-------+-------+-------+-------+-------+
+Result: 
+0   0   0   0   0   0   0   0   0   
+0   0   1   1   1   1   1   1   1   
+0   0   1   2   2   3   3   3   3   
+0   0   1   2   5   5   6   7   7   
+0   0   1   2   5   6   6   7   8
+```
+Selected items for maximum profit: P1 P3   
+Maximum Profit : 8   
+
+Time complexity : n * capacity  
+Space complexity : n * capacity    
+
+
+ 
+### ------------------------- Program - 02 ---------------------------
+AIM : To find shortest path from source to sink in a multistage graph.  
+WORKING :  
+1. The code implements a multistage graph problem, finding the shortest path from the start node (0) to the end node (n-1).
+2. The countStages function calculates the number of stages in the given graph. It traverses the graph from the start node to the end node, incrementing a counter for each stage.
+3. The Multistage function computes the shortest path using dynamic programming.
+4. It initializes a vector fdist to store the shortest distance from each node to the end node, initializing the end node's distance to 0 and others to infinity.
+5. It also initializes a vector path to store the next node in the shortest path for each node.
+6. The function iterates backward from the second-to-last node to the start node, calculating the shortest distance to the end node for each node.
+7. For each node, it examines its outgoing edges and updates fdist and path if a shorter path is found.
+8. It prints the chosen edge for each node during the backward iteration.
+9. After calculating the shortest distances, it reconstructs the shortest path by traversing the path vector.
+10. It prints the shortest path and its total cost (the shortest distance from the start node to the end node).
+11. The main function takes the number of vertices and edges as input.
+12. It creates an adjacency matrix cost to represent the graph's edge weights.
+13. It reads the source, destination, and weight for each edge from the user and populates the cost matrix.
+14. It calls countEdges to determine the number of stages in the graph.
+15. It calls Multistage to find and print the shortest path and its cost.
+
+ OUTPUT : 
+ enter no. of vertices : 8  
+enter no. of edges : 12  
+enter source, destination and weight : 0 1 1   
+enter source, destination and weight : 0 2 2   
+enter source, destination and weight : 0 3 5    
+enter source, destination and weight : 1 4 4  
+enter source, destination and weight : 1 5 11   
+enter source, destination and weight : 2 4 9    
+enter source, destination and weight : 2 5 5   
+enter source, destination and weight : 2 6 16     
+enter source, destination and weight : 3 6 2   
+enter source, destination and weight : 4 7 18  
+enter source, destination and weight : 5 7 13  
+enter source, destination and weight : 6 7 2  
+No. of stages : 4  
+chosen edge : 6 7   
+chosen edge : 5 7  
+chosen edge : 4 7   
+chosen edge : 3 6   
+chosen edge : 2 5   
+chosen edge : 1 4   
+chosen edge : 0 3   
+The shortest path from 0 to 7 is: 0 ---> 3 ---> 6 ---> 7  
+Total cost: 9  
+GRAPH :  
+![Screenshot 2025-03-30 150858](https://github.com/user-attachments/assets/9b5e261d-a051-46f1-b6b4-53b00e2effed)
+![Screenshot 2025-03-30 151033](https://github.com/user-attachments/assets/a5908d9a-cd6f-47b0-90e6-88b56db1fb03)   
+Time complexity : O(n^2)
+space complexity : O(n^2)
