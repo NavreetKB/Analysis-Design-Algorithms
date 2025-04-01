@@ -631,7 +631,9 @@ maxmum element 11
 minimum element -5  
 
 Time complexity : O(n)  
-space complexity : O(n)  
+space complexity : O(n)     
+![Screenshot 2025-04-01 230721](https://github.com/user-attachments/assets/90f06e6c-bfda-4061-9f02-7490c1667492)
+
 
 <br><br><br>
 ### ------------------------- Program - 05 --------------------------- 
@@ -1123,6 +1125,8 @@ Result:
 Selected items for maximum profit: P1 P3   
 Maximum Profit : 8   
 
+  ![Screenshot 2025-04-01 230824](https://github.com/user-attachments/assets/70f21d64-9fec-4fdd-9460-8ddf43b731c9)
+
 Time complexity : n * capacity  
 Space complexity : n * capacity    
 
@@ -1174,6 +1178,47 @@ The shortest path from 0 to 7 is: 0 ---> 3 ---> 6 ---> 7
 Total cost: 9  
 GRAPH :  
 ![Screenshot 2025-03-30 150858](https://github.com/user-attachments/assets/9b5e261d-a051-46f1-b6b4-53b00e2effed)
-![Screenshot 2025-03-30 151033](https://github.com/user-attachments/assets/a5908d9a-cd6f-47b0-90e6-88b56db1fb03)   
+![Screenshot 2025-03-30 151033](https://github.com/user-attachments/assets/a5908d9a-cd6f-47b0-90e6-88b56db1fb03)    
+![Screenshot 2025-04-01 232449](https://github.com/user-attachments/assets/6d8458fa-3c70-47c6-8711-d0f3272a287a)
+
 Time complexity : O(n^2)
 space complexity : O(n^2)
+
+
+
+### ------------------------- Program - 03 ---------------------------  
+AIM: To solve the travelling salesperson problem (basic approach).  
+WORKING:  
+1. The travelling salesperson problem is to travel all the nodes of a graph exactly once and return to the source node at the end (hamiltonian graph).
+2. To try all possible routes, we maintain a set of vertices which consists of all non visited vertices.
+3. The main idea is to find the min path length from { distance of A from neighbour1 + minpath length till neighbour1, distance of A from neighbour2 + minpath length till neighbour2 ... and so on for all vertices}.
+4. We recursively find out the path lenghts of all combinations of nodes by the following function call:
+```
+pathlen= cost[source][set[i]]+travel(cost,set[i],newset,sum);
+```
+hence we the min pathlen and return it.  
+5.Base case is reached when the set is empty, there we simply return the cost[node][source] as the final destination is source itself.  
+6. This approach uses recusion and is not optimal as it takes n! time for execution.  
+
+OUTPUT:  
+enter no. of vertices : 4
+enter no. of edges : 12
+enter source, destination and weight : 0 1 16
+enter source, destination and weight : 0 2 11
+enter source, destination and weight : 0 3 6
+enter source, destination and weight : 1 0 8
+enter source, destination and weight : 1 2 13
+enter source, destination and weight : 1 3 16
+enter source, destination and weight : 2 0 4
+enter source, destination and weight : 2 1 7
+enter source, destination and weight : 2 3 9
+enter source, destination and weight : 3 0 5
+enter source, destination and weight : 3 1 12
+enter source, destination and weight : 3 2 2
+minimum distance to travel all nodes and return back : 23   
+
+
+  ![image](https://github.com/user-attachments/assets/88d84451-f8b9-4ea2-b5d8-b64a51838e78)
+
+ Timecomplexity : O(n!) 
+ Space complexity : O(n^2)
