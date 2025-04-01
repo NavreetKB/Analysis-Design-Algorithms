@@ -1200,25 +1200,26 @@ hence we the min pathlen and return it.
 5.Base case is reached when the set is empty, there we simply return the cost[node][source] as the final destination is source itself.  
 6. This approach uses recusion and is not optimal as it takes n! time for execution.  
 
-OUTPUT:  
-enter no. of vertices : 4
-enter no. of edges : 12
-enter source, destination and weight : 0 1 16
-enter source, destination and weight : 0 2 11
-enter source, destination and weight : 0 3 6
-enter source, destination and weight : 1 0 8
-enter source, destination and weight : 1 2 13
-enter source, destination and weight : 1 3 16
-enter source, destination and weight : 2 0 4
-enter source, destination and weight : 2 1 7
-enter source, destination and weight : 2 3 9
-enter source, destination and weight : 3 0 5
-enter source, destination and weight : 3 1 12
-enter source, destination and weight : 3 2 2
-minimum distance to travel all nodes and return back : 23   
-
-
-  ![image](https://github.com/user-attachments/assets/88d84451-f8b9-4ea2-b5d8-b64a51838e78)
-
- Timecomplexity : O(n!) 
- Space complexity : O(n^2)
+OUTPUT:     
+enter no. of vertices : 4   
+enter no. of edges : 12                            
+enter source, destination and weight : 0 1 16    
+enter source, destination and weight : 0 2 11           
+enter source, destination and weight : 0 3 6              
+enter source, destination and weight : 1 0 8                  
+enter source, destination and weight : 1 2 13                
+enter source, destination and weight : 1 3 16               
+enter source, destination and weight : 2 0 4            
+enter source, destination and weight : 2 1 7          
+enter source, destination and weight : 2 3 9          
+enter source, destination and weight : 3 0 5        
+enter source, destination and weight : 3 1 12       
+enter source, destination and weight : 3 2 2                 
+minimum distance to travel all nodes and return back : 23              
+           
+              
+ ![image](https://github.com/user-attachments/assets/530359ee-659c-4ee2-9e56-f47a55673c3c)
+           
+                             
+ Timecomplexity : O(n!)          
+ Space complexity : O(n^2)           
