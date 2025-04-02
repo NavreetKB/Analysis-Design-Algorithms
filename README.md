@@ -47,7 +47,9 @@ Time Complexity: 1D: O(logn)
                  2D: O(nlogn)  
 Space Complexity: 1D: O(n)   
                   2D: O(n^2)  
-                  
+
+ ![Screenshot 2025-04-02 225931](https://github.com/user-attachments/assets/1a3cb391-f710-498b-ac05-85fa8005b449)
+
 <br/><br/>
 ### ------------------------- Program - 02 ---------------------------    
 
@@ -837,6 +839,8 @@ Timecomplexity = O(nlogn) for sorting O(n) for greedy approach ,hence O(nlogn)
 Space complexity =O(n)
 
 
+ ![Screenshot 2025-04-02 233254](https://github.com/user-attachments/assets/b11c3ef2-2846-487d-bc87-1e1b42cc01fa)
+
 
 
 ### ------------------------- Program - 02 ---------------------------  
@@ -860,7 +864,6 @@ WORKING :
 OUTPUT :  
 ![Picture1](https://github.com/user-attachments/assets/041dfda3-9e91-42b9-9647-14155d4a7342)
 
-    
 
 enter no. of vertices 6  
 enter no. of edges 8    
@@ -883,8 +886,10 @@ path from 0 to 5th node :
 5 <-- 3 <-- 1 <-- 0   
 
 
-Time Complexity : O(n^2)
-space complexity : O(n^2)  
+Time Complexity : O(n^2)  
+space complexity : O(n^2)    
+![Screenshot 2025-04-02 233816](https://github.com/user-attachments/assets/00f1ba2f-8d23-4607-b689-ab72a17243ef)
+
 
 
 
@@ -1185,8 +1190,49 @@ Time complexity : O(n^2)
 space complexity : O(n^2)
 
 
+### ------------------------- Program - 03 ---------------------------   
+AIM: Implement the backward approach for multistage graph.  
+WORKING :  
+1. The code implements a multistage graph problem, finding the shortest path from the start node (0) to the end node (n-1).
+2. Backward approach is similar to the froward approach except that here we consider distances from immediate preceeding nodes.
+3. The loop here steps up from i=2 to n-1 and the minimum cost vertex belonging to previous stage is found out.
+4. For each node, it examines its incoming edges and updates bdist and path if a shorter path is found.
+5. After calculating the shortest distances, it reconstructs the shortest path by traversing the path vector.
+6. It prints the shortest path and its total cost (the shortest distance from the start node to the end node).
+7. The main function takes the number of vertices and edges as input.
+8. It creates an adjacency matrix cost to represent the graph's edge weights.
+9. It reads the source, destination, and weight for each edge from the user and populates the cost matrix.
+10. It calls countEdges to determine the number of stages in the graph.
+11. It calls Multistage to find and print the shortest path and its cost.
 
-### ------------------------- Program - 03 ---------------------------  
+     
+OUTPUT :  
+enter no. of vertices : 6  
+enter no. of edges : 7   
+enter source, destination and weight : 0 1 1   
+enter source, destination and weight : 0 2 2   
+enter source, destination and weight : 1 3 2  
+enter source, destination and weight : 2 4 5  
+enter source, destination and weight : 1 4 3  
+enter source, destination and weight : 3 5 4  
+enter source, destination and weight : 4 5 2  
+No. of stages : 4  
+chosen edge : 1 0  
+chosen edge : 2 0  
+chosen edge : 3 1  
+chosen edge : 4 1  
+chosen edge : 5 4  
+The shortest path from 0 to 5 is: 0 ---> 1 ---> 4 ---> 5  
+Total cost: 6  
+![Screenshot 2025-04-03 004547](https://github.com/user-attachments/assets/76e9db24-655d-4984-b7d6-59df5993ca4c)  
+![Screenshot 2025-04-03 004625](https://github.com/user-attachments/assets/45a5a08d-d3e8-4848-9712-0b65cf334c80)
+
+Time complexity :  
+![Screenshot 2025-04-01 232449](https://github.com/user-attachments/assets/fea3d67a-c5da-4439-a453-3ae14095bd04)
+
+
+  
+### ------------------------- Program - 04 ---------------------------  
 AIM: To solve the travelling salesperson problem (basic approach).  
 WORKING:  
 1. The travelling salesperson problem is to travel all the nodes of a graph exactly once and return to the source node at the end (hamiltonian graph).
@@ -1223,3 +1269,25 @@ minimum distance to travel all nodes and return back : 23
                              
  Timecomplexity : O(n!)          
  Space complexity : O(n^2)           
+
+ 
+### ------------------------- Program - 05 ---------------------------
+AIM : Finding median in O(n) time complexity using partition function.  
+WORKING :  
+1. Start by taking array as input from user.
+2. In the partition function pick the first element as pivot, and place it at its correct position.
+3. position is returned to the calling function.
+4. if the position is equal to the median (n/2) then median has been found .
+5. If the position of the current pivot is in the left of the middle of an array then repeat all the steps for the subarray starting from the starting index and the pivot as the ending index.
+6. If the position of the current pivot is in the right of the middle of an array then repeat all the steps for the subarray starting from the pivot index and ending as the previous ending index.
+
+
+ OUTPUT :
+ enter the no. of elements in array 9  
+enter the elements 1 7 89 3 7 2 5 0 2  
+Median is 3  
+
+Time complexity : O(n)
+Space complexity : O(n)   
+![Screenshot 2025-04-03 001710](https://github.com/user-attachments/assets/786e59df-2037-495c-b927-b24091a8fe78)
+
