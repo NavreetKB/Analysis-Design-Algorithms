@@ -838,8 +838,9 @@ Ouput for different sets of inputs
 Timecomplexity = O(nlogn) for sorting O(n) for greedy approach ,hence O(nlogn)
 Space complexity =O(n)
 
+![Screenshot 2025-04-13 002448](https://github.com/user-attachments/assets/aa8e6172-092b-4c9c-bdde-c21707b7c9c0)
 
- ![Screenshot 2025-04-02 233254](https://github.com/user-attachments/assets/b11c3ef2-2846-487d-bc87-1e1b42cc01fa)
+
 
 
 
@@ -888,7 +889,8 @@ path from 0 to 5th node :
 
 Time Complexity : O(n^2)  
 space complexity : O(n^2)    
-![Screenshot 2025-04-02 233816](https://github.com/user-attachments/assets/00f1ba2f-8d23-4607-b689-ab72a17243ef)
+![Screenshot 2025-04-13 000151](https://github.com/user-attachments/assets/2a7d0813-00d8-4389-a7b8-84a791c5b604)
+
 
 
 
@@ -1264,7 +1266,8 @@ enter source, destination and weight : 3 2 2
 minimum distance to travel all nodes and return back : 23              
            
               
- ![image](https://github.com/user-attachments/assets/530359ee-659c-4ee2-9e56-f47a55673c3c)
+![Screenshot 2025-04-12 234231](https://github.com/user-attachments/assets/6975a587-21d1-4404-885e-726a33c94cc5)
+
            
                              
  Timecomplexity : O(n!)          
@@ -1288,6 +1291,8 @@ enter the elements 1 7 89 3 7 2 5 0 2
 Median is 3  
 
 Time complexity : O(n)
-Space complexity : O(n)   
-![Screenshot 2025-04-03 001710](https://github.com/user-attachments/assets/786e59df-2037-495c-b927-b24091a8fe78)
+Space complexity : O(n)     
+![Screenshot 2025-04-12 235301](https://github.com/user-attachments/assets/556b06f4-637e-4186-a804-8578bd672f09)
+
+
 
