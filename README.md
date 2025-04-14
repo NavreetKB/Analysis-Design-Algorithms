@@ -1235,7 +1235,7 @@ Time complexity :
 
   
 ### ------------------------- Program - 04 ---------------------------  
-AIM: To solve the travelling salesperson problem (basic approach).  
+AIM: To solve the travelling salesperson problem (recursive approach).  
 WORKING:  
 1. The travelling salesperson problem is to travel all the nodes of a graph exactly once and return to the source node at the end (hamiltonian graph).
 2. To try all possible routes, we maintain a set of vertices which consists of all non visited vertices.
@@ -1294,5 +1294,189 @@ Time complexity : O(n)
 Space complexity : O(n)     
 ![Screenshot 2025-04-12 235301](https://github.com/user-attachments/assets/556b06f4-637e-4186-a804-8578bd672f09)
 
+ 
+### ------------------------- Program - 06 ---------------------------  
+AIM: To solve travelling salesman problem using dynamic programming.  
+WORKING :  
+1. To improve the time complexity we will use dynamic programming approach.
+2. to check all possibe paths recursive means computing all permutations of nodes (n!).
+3. To avoid recomputation we will use a table that stores the cost of moving to each node after having traversed a particular subset of nodes.
+4. we do not need to recompute the distance for the same subset as the total sum will remain same regardless of the order in which nodes are traversed. Only thing that matters is which node is chosen as the immediate previous node to the new unvisited node as that distance will be different with each node of the visited subset.
+5. so we calculate the distance of unvisited node v from the subset of visited nodes (u). for each unvisited node we pair it with every visited node of subset and pick the minimum distance.
+6. Continue this for every subset of the nodes (2^n).
+7. To implement this we use bitmasking : 1 for visited and 0 for unvisited
+```
+for(int mask=0;mask< (1<<n);mask++){     //subset
+        for(int u=0;u<n;u++){                //all visited nodes
+            if((mask & (1<<u)) == 0)
+                continue;
+            for(int v=0;v<n;v++){           // all remaining nodes
+                if((mask & (1<<v))== 0){
+                    int newmask=(mask | (1<<v));
+                    if(cost[u][v]!=INT_MAX && dp[mask][u]!=INT_MAX){
+                        dp[newmask][v]=min(dp[newmask][v],dp[mask][u]+cost[u][v]);
+                    }
+```
+8. Finally we find the vertex with minimum distance to the source again.
+
+OUTPUT:  
+enter no. of vertices : 5  
+enter no. of edges : 10                            
+enter source, destination and weight : 0 1 12  
+enter source, destination and weight : 1 3 7  
+enter source, destination and weight : 3 4 4   
+enter source, destination and weight : 4 2 20   
+enter source, destination and weight : 0 2 10   
+enter source, destination and weight : 0 3 19   
+enter source, destination and weight : 0 4 8   
+enter source, destination and weight : 1 2 3  
+enter source, destination and weight : 1 4 2   
+enter source, destination and weight : 3 2 6   
+0 --> 1 --> 2 --> 3 --> 4 --> 0    
+Minimum path length : 32   
+![image](https://github.com/user-attachments/assets/3a944500-0fd4-4c82-a5ba-f966df7ad457)
 
 
+Time complexity : O(n^2 *(2^n))   
+Space complexity : O(n *(2^n))  
+![Screenshot 2025-04-13 144526](https://github.com/user-attachments/assets/53ccd1a5-4a94-46b0-b923-01eacb8aeaab)   
+
+ 
+### ------------------------- Program - 07 ---------------------------   
+AIM : To implement Warshall's algorithm .  
+WORKING:  
+1. Start by taking a cost matrix as input from the user, where cost[i][j] represents the weight of the edge from node i to node j.
+2. Initialize matrix A as a copy of the cost matrix.
+3. For each node 'k' from 0 to n-1, consider it as an intermediate node.
+4. For every pair of nodes (i, j), check if going through node k offers a shorter path.
+5. If A[i][k] != INF and A[k][j] != INF and A[i][j] > A[i][k] + A[k][j], then update A[i][j] = A[i][k] + A[k][j].
+6. Repeat the above steps for all values of k from 0 to n-1.
+7. After all iterations, matrix A will contain the shortest distances between all pairs of nodes.
+
+OUTPUT :  
+enter no. of vertices : 4   
+enter no. of edges : 6                          
+enter source, destination and weight : 0 1 3   
+enter source, destination and weight : 0 3 5   
+enter source, destination and weight : 1 0 2  
+enter source, destination and weight : 1 3 4   
+enter source, destination and weight : 2 1 1  
+enter source, destination and weight : 3 2 2   
+Shortest paths matrix    
+   0   3   7   5   
+   2   0   6   4   
+   3   1   0   5   
+   5   3   2   0   
+
+Time complexity : O(n^3)  
+Space complexity : O(n^2)    
+![Screenshot 2025-04-05 121633](https://github.com/user-attachments/assets/a2d8b2fa-bbf8-45fa-b709-8e62ce88d3ee)
+
+
+
+ 
+## Lab - 08      Date: 03-04-2025    
+ 
+### ------------------------- Program - 01 ---------------------------   
+AIM : To implement Knapsack 0/1 problem using sets approach.  
+WORKING :  
+1. Take the items, their profit, weights and capacity as input from user.
+2. The knapsack function is called with the profits, weights, capacity and no. of items as arguments.
+3. Create a table with no. of rows= n+1 and no. of columns = capacity + 1.
+4. 0th row and 0th column are initialised with 0.
+5. We initialise S(0) = {(0,0)} and for subsequent sets S(i,1)={(P,W) | (P - p(i+1) , W - w(i+1) ) belongs to S(i) }
+6. S(i+1)=S(i)+S(i,1)
+7. To remove suboptimal pairs we use dominance rule that if p(j)<=p(k) and w(j)>w(k) then purge (remove) tuple j
+8. The above 2 steps are implemented as MergePurge operations.
+
+OUTPUT:  
+enter no. of items : 4       
+enter capacity : 10                        
+enter profit and weight for P0 : 10 5      
+enter profit and weight for P1 : 40 4    
+enter profit and weight for P2 : 30 6       
+enter profit and weight for P3 : 50 3        
+Original Table :    
+```
+-------+-------+-------+-------+-------+         
+PROFIT |  10   |  40   |  30   |  50   | 
+-------+-------+-------+-------+-------+
+WEIGHT |   5   |   4   |   6   |   3   |
+-------+-------+-------+-------+-------+
+```
+Result:  
+```
+0   0   0   0   0   0   0     0   0   0   0   
+0   0   0   0   0   10  10   10   10   10   10   
+0   0   0   0   40  40  40   40   40   50   50   
+0   0   0   0   40  40  40   40   40   50   70   
+0   0   0   50  50  50  50   90   90   90   90
+```
+Selected items for maximum profit: P2 P4 
+Maximum Profit : 90    
+Time complexity :
+Space complexity : 
+![Screenshot 2025-04-05 102433](https://github.com/user-attachments/assets/de527bb6-68cf-4ff8-a069-65fde2a0625f)
+
+
+### ------------------------- Program - 02 ---------------------------    
+AIM : To implement matrix chain multiplication optimally using dynamic programming.  
+WORKING : 
+1.Take the no. of matrices and matrix chain sequence as input from user.  
+2. Matrix multiplication is not commutative but it is associative and we shall use the associativity property.  
+3. create 2d matrices m and s of sizes n+1 and initialise m[i,i] =0.  
+4. The idea is m[i,j]= min{ m[i,k]+m[k,j] + p(i-1)*p(k)*p(j)  for all i<=k<j }
+5. this idea is implemented as 
+```
+ for(int l=2;l<=n;l++){
+        for(int i=1;i<=n-l+1;i++){
+            int j=i+l-1;
+            m[i][j]=INT16_MAX;
+            for(int k=i;k<=j-1;k++){
+                int q=m[i][k]+m[k+1][j]+p[i-1]*p[k]*p[j];
+                if(q<m[i][j]){
+                    m[i][j]=q;
+                    s[i][j]=k;
+                }
+```
+6. The table m avoid recomputation of matrix multiplications and s gives the sequence of parenthesis by storing the value of k.
+7. The print function works recursively by reaching till the individual matrices in each pair of parenthesis.
+
+OUTPUT:  
+enter no. of matrices : 4           
+enter the chain : 10 15 20 5 10        
+((A1 (A2 A3 ))A4 )           
+
+Time complexity : O(n^3)   
+Space complexity : O(n^2)    
+Graph : 
+![Screenshot 2025-04-05 124557](https://github.com/user-attachments/assets/8443d717-f730-41aa-946f-00425cd3ada5)
+
+
+
+### ------------------------- Program - 03 ---------------------------  
+AIM : To find the longest common subsequence from given strings using dynamic programming.  
+WORKING :  
+1. Take the strings as inputs from user . let string x has length m and y has lenght n.
+2. Create 2 2D vectors c (to store lengths of common subsequence) and b (to store directions) each of sizes((m+1)*(n+1)) .
+3. Initialise 1st row and column with 0 as a stirng with 0 length does not have any common subsequence.
+4. Then traverse table c row wise and for each cell if the corresponding values of x and y are equal then add 1 to the diagonal length and put a \ sign in b.
+5. Otherwise put the value of the above cell or left cell whichever is larger and put a "|" or "<-" accordingly .
+6. The length of longest subsequence is present in the last cell.
+7. To get the subsequence use the b table and print the letter corresponding to cells with a '\' symbol and call it recursively with the indices pointed by the symbol of that cell.
+8. if the symbol is '|' call recursively with i-1 ,j and for '<-' call it with i,j-1.
+
+OUTPUT :                    
+enter string X : COMPUTE     
+enter string y : OPTION      
+LCS:        
+OPT                  
+length of LCS : 3                 
+
+Time complexity : O(m*n)     
+Space complexity : O(m*n)       
+Graph :    
+![Screenshot 2025-04-13 211358](https://github.com/user-attachments/assets/d5b5135f-0434-4b84-8618-1135a896caef)
+
+
+  
