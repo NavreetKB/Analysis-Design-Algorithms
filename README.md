@@ -634,7 +634,8 @@ minimum element -5
 
 Time complexity : O(n)  
 space complexity : O(n)     
-![Screenshot 2025-04-01 230721](https://github.com/user-attachments/assets/90f06e6c-bfda-4061-9f02-7490c1667492)
+![Screenshot 2025-04-01 201508](https://github.com/user-attachments/assets/ca843fdb-b9d1-48d3-a13b-a46639cf5c26)
+
 
 
 <br><br><br>
