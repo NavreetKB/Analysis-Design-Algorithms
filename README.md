@@ -1635,18 +1635,18 @@ while(true){
 6. If a color is assigned then, next nodes are colored untill all colored, and the solution is printed.
 7. If colors are insufficient then a message is displayed to the user.
 
-OUTPUT : 
-enter the number of nodes : 6
-enter no. of edges : 8
-enter endpoints : 0 1
-enter endpoints : 0 2
-enter endpoints : 1 2 
-enter endpoints : 1 3
-enter endpoints : 2 4
-enter endpoints : 3 4
-enter endpoints : 1 4 
-enter endpoints : 4 5
-enter no. of colors : 3
+OUTPUT :                         
+enter the number of nodes : 6       
+enter no. of edges : 8       
+enter endpoints : 0 1      
+enter endpoints : 0 2       
+enter endpoints : 1 2           
+enter endpoints : 1 3           
+enter endpoints : 2 4      
+enter endpoints : 3 4           
+enter endpoints : 1 4        
+enter endpoints : 4 5        
+enter no. of colors : 3                
 1  2  3  3  1  2     
 1  2  3  3  1  3     
 1  3  2  2  1  2     
