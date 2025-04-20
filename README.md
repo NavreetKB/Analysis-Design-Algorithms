@@ -1,4 +1,4 @@
-# Analysis and Design of Algorithms
+![Screenshot 2025-04-20 231804](https://github.com/user-attachments/assets/50b9b617-e3df-4b78-9d06-7173c51a1f6a)# Analysis and Design of Algorithms
 
 ## Lab - 01      Date: 23-01-2025    
  
@@ -1480,4 +1480,194 @@ Graph :
 ![Screenshot 2025-04-13 211358](https://github.com/user-attachments/assets/d5b5135f-0434-4b84-8618-1135a896caef)
 
 
-  
+## Lab - 09      Date: 17-04-2025    
+ 
+### ------------------------- Program - 01 --------------------------- 
+
+ AIM : To solve n-queens problem using backtracking    
+ WORKING:  
+ 1. The n queens problem is essentially about placing n queens on a nxn chessboard such that no 2 queens are in same row, column or diagonal.
+ 2. Solving this problem involves searching for the answer state among various solutions present in the state space tree.
+ 3. Here we take no. of queens as input from user.
+ 4. Then we iterate for each queen and try to place the kth queen in ith coulmn after checking the implicit constraints.
+ 5. The place function tests for the implicit constraints and returns true or false accordingly.
+```
+ for(int j=0;j<k;j++){
+        if(i==x[j] || abs(j-k)==abs(i-x[j])){
+            return false;
+        }
+    }
+```
+6. If a queen cannot be placed then function recursively backtracks to the state of previous queen.
+7. If n queens have been placed it means one answer state is ready and is hence printed.
+8. This function finds all possible solutions for n queens.
+
+OUTPUT :  
+```
+enter no. of queens : 4
+    .    Q    .    .
+    .    .    .    Q
+    Q    .    .    .
+    .    .    Q    .
+
+
+    .    .    Q    .
+    Q    .    .    .
+    .    .    .    Q
+    .    Q    .    .
+```
+
+Timecomplexity : O(n!)   
+Space complexity: O(n)   
+Graph :
+![Screenshot 2025-04-20 231804](https://github.com/user-attachments/assets/28baf88f-ffdf-42ad-b0c5-78abb86adc03)
+
+### ------------------------- Program - 02 --------------------------- 
+AIM : to optimise n-queen problem by symmetric solutions.   
+WORKING :  
+1. The n queens problem is essentially about placing n queens on a nxn chessboard such that no 2 queens are in same row, column or diagonal.
+2. Solving this problem involves searching for the answer state among various solutions present in the state space tree.
+3. Here we take no. of queens as input from user.
+4. Now from symmetry it is observed that many solutions are mirror images of each other.
+5. So we compute by placing the 1st queen up till n/2 th column only and generate rest of the solutions by mirroring.
+```
+ vector<int> mirror(n,-1);
+    for(int i=0;i<n;i++){
+        mirror[i]=n-x[i]-1;
+    }
+```
+6. Essentially we shall have an execution twice as fast as the first algorithm although the upper bound remains the same.
+7. If n queens have been placed it means one answer state is ready and is hence printed.
+8. This function finds all possible solutions for n queens.
+
+OUTPUT:  
+```
+enter no. of queens : 5
+    Q    .    .    .    .
+    .    .    Q    .    .
+    .    .    .    .    Q
+    .    Q    .    .    .
+    .    .    .    Q    .
+-----------------------------
+    .    .    .    .    Q
+    .    .    Q    .    .
+    Q    .    .    .    .
+    .    .    .    Q    .
+    .    Q    .    .    .
+-----------------------------
+    Q    .    .    .    .
+    .    .    .    Q    .
+    .    Q    .    .    .
+    .    .    .    .    Q
+    .    .    Q    .    .
+-----------------------------
+    .    .    .    .    Q
+    .    Q    .    .    .
+    .    .    .    Q    .
+    Q    .    .    .    .
+    .    .    Q    .    .
+-----------------------------
+    .    Q    .    .    .
+    .    .    .    Q    .
+    Q    .    .    .    .
+    .    .    Q    .    .
+    .    .    .    .    Q
+-----------------------------
+    .    Q    .    .    .
+    .    .    .    .    Q
+    .    .    Q    .    .
+    Q    .    .    .    .
+    .    .    .    Q    .
+-----------------------------
+    .    .    .    Q    .
+    Q    .    .    .    .
+    .    .    Q    .    .
+    .    .    .    .    Q
+    .    Q    .    .    .
+-----------------------------
+    .    .    Q    .    .
+    Q    .    .    .    .
+    .    .    .    Q    .
+    .    Q    .    .    .
+    .    .    .    .    Q
+-----------------------------
+    .    .    Q    .    .
+    .    .    .    .    Q
+    .    Q    .    .    .
+    .    .    .    Q    .
+    Q    .    .    .    .
+-----------------------------
+    .    .    Q    .    .
+    Q    .    .    .    .
+    .    .    .    Q    .
+    .    Q    .    .    .
+    .    .    .    .    Q
+----------------------------
+```
+Timecomplexity : O(n!)   
+Space complexity: O(n)   
+Graph :   
+![Screenshot 2025-04-20 232532](https://github.com/user-attachments/assets/dbea59f8-29f7-46fd-868c-f93fdcc5db32)
+
+
+### ------------------------- Program - 03 --------------------------- 
+
+AIM : to implement m coloring decision problem for a graph using backtracking.  
+WORKING :
+1. The graph and no. of colors are taken as input from user.
+2. The mcolor function is called which in turn calls nextvalue function to provide a color to kth node.
+3. The nextvalue function tries to assign a color starting from the first color for each node.
+4. A color is assigned and then checked if its adjacent nodes have the same color, if they do then loop continues with the next color assigned.
+5. If all colors are exhausted (x[k]==0) then no color can be assigned, in this case the mcolor backtracks to the previous node.
+```
+while(true){
+        x[k]=(x[k]+1)%(m+1);
+        if(x[k]==0)
+            return;
+        for(j=0;j<n;j++){
+            if(adj[j][k]!=0 && x[j]==x[k])
+                break;
+        }
+        if(j==n)
+            return;  
+    }
+```
+6. If a color is assigned then, next nodes are colored untill all colored, and the solution is printed.
+7. If colors are insufficient then a message is displayed to the user.
+
+OUTPUT : 
+enter the number of nodes : 6
+enter no. of edges : 8
+enter endpoints : 0 1
+enter endpoints : 0 2
+enter endpoints : 1 2 
+enter endpoints : 1 3
+enter endpoints : 2 4
+enter endpoints : 3 4
+enter endpoints : 1 4 
+enter endpoints : 4 5
+enter no. of colors : 3
+1  2  3  3  1  2     
+1  2  3  3  1  3     
+1  3  2  2  1  2     
+1  3  2  2  1  3      
+2  1  3  3  2  1   
+2  1  3  3  2  3   
+2  3  1  1  2  1     
+2  3  1  1  2  3    
+3  1  2  2  3  1    
+3  1  2  2  3  2    
+3  2  1  1  3  1    
+3  2  1  1  3  2     
+
+Graphs:  
+![Screenshot 2025-04-21 001354](https://github.com/user-attachments/assets/621edff0-afde-445a-94d8-8090160efeaa)
+
+![Screenshot 2025-04-21 001407](https://github.com/user-attachments/assets/867f7f5f-5d3a-46d7-90a1-827da2f7af40)
+
+
+
+
+Time complexity : O(n*(m^n))   
+Space complexity : O(n^2)   
+
