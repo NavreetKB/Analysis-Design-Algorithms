@@ -1,4 +1,4 @@
-![Screenshot 2025-04-20 231804](https://github.com/user-attachments/assets/50b9b617-e3df-4b78-9d06-7173c51a1f6a)# Analysis and Design of Algorithms
+# Analysis and Design of Algorithms
 
 ## Lab - 01      Date: 23-01-2025    
  
@@ -1668,6 +1668,12 @@ Graphs:
 
 
 
-Time complexity : O(n*(m^n))   
-Space complexity : O(n^2)   
+Time complexity : O((m^n))  (worst case)   
+Space complexity : O(n^2)      
+            
+Nodes: 4, 5, 6, 7, 8                                       
+Times (ms): 303.01, 1502.94, 6920.25, 35125.9, 163295   
+Recursive Calls: 85, 341, 1365, 5461, 21845  
+Graph :   
+![Screenshot 2025-04-22 084634](https://github.com/user-attachments/assets/b125db85-0208-4269-90e0-a26beb3e15b3)
 
