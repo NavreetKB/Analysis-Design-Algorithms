@@ -1403,7 +1403,7 @@ Original Table :
 PROFIT |  10   |  40   |  30   |  50   | 
 -------+-------+-------+-------+-------+
 WEIGHT |   5   |   4   |   6   |   3   |
--------+-------+-------+-------+-------+
+-------+-------+-------+-------+-------+ 
 ```
 Result:  
 ```
@@ -1676,4 +1676,81 @@ Times (ms): 303.01, 1502.94, 6920.25, 35125.9, 163295
 Recursive Calls: 85, 341, 1365, 5461, 21845  
 Graph :   
 ![Screenshot 2025-04-22 084634](https://github.com/user-attachments/assets/b125db85-0208-4269-90e0-a26beb3e15b3)
+
+
+  
+## Lab - 10      Date: 24-04-2025    
+ 
+### ------------------------- Program - 01 ---------------------------   
+AIM : To find Hamiltonian cycle from a given graph if it exists usin backtracking.  
+To find a path which covers all vertices of a graph exactly once and starts and terminates at the same vertex.  
+WORKING :  
+1. Take the graph as input from user.
+2. The starting node (say 0) is already assigned to x[0].
+3. The function hamiltonian tries to assign a node to the kth index of x (solution vector).
+4. The nextvalue function assigns a value to the kth index of x starting from 1 to n.
+5. Then it compares if the newly added node is directly connected to its immediate previos node x[k-1].
+6. If it does, it checks all included nodes if the current one is a repitition or not.
+7. If both conditions are satisfied it assigns that node to the kth index . Otherwise it is loops for next choice until it finally returns.
+8. if k==n then we are done with all the nodes and solution is printed.
+9. A count is kept globally which tells if a solution exists or not (cnt == 0 ) then no solution.
+
+OUTPUT:                     
+enter no. of vertices : 4     
+enter no. of edges : 6                
+enter source and destination : 0 1         
+enter source and destination : 1 2          
+enter source and destination : 2 3       
+enter source and destination : 3 0        
+enter source and destination : 0 2         
+enter source and destination : 1 3        
+0  1  2  3  0            
+0  2  1  3  0          
+0  3  1  2  0            
+Graph :  
+![image](https://github.com/user-attachments/assets/0e1958c5-c38a-4eb7-8451-eba412479d9e)
+
+Time complexity:  O(n!)   
+Space complexity : O(n^2)  
+![Screenshot 2025-04-25 231405](https://github.com/user-attachments/assets/e00fa44c-979f-4a7b-aa6f-f5f9691ab04a)
+
+
+### ------------------------- Program - 02 ---------------------------   
+AIM : to find solution to sum of subsets problem using backtracking.  
+We are given a set and a sum m and we need to find all subsets of set whose elements add up to exactly m. 
+WORKING :  
+1. take the set and m as input from user. Sort the set in non decreasing order .
+2. Then we call sumsubsets function, where we try to include kth element of set given we have currently included elements adding upto s and remaining elements adding up to r.
+3. we include k x[k]=1 and check if this completes the sum m , if does we print it .
+4. Otherwise we check if the current sum+ includeing this element (k) and its next element (k+1) would be <=m
+5. If that hold we have included k and we go for k+1 recursively.
+6. Otherwise it is not possible to include k as neither does it sums to m nor is it safe to add its next element as that would exceed m (so its better to skip this element k) .
+7. We check if available elements sum >=m and if adding k+1 to current sum is <=m and then go on to add k+1 in the solution.
+8. If it does not hold true we backtrack.
+9. It prints all possible solutions.
+
+OUTPUT :  
+enter size of set : 6        
+enter elements of the set :        
+5 10 12 13 15 18              
+enter the value of sum : 30        
+5 10 15          
+5 12 13          
+12 18         
+                        
+enter size of set : 8         
+enter elements of the set :         
+1 9 7 5 18 12 20 15             
+enter the value of sum : 35    
+1 5 9 20      
+1 7 9 18       
+1 7 12 15      
+5 12 18    
+15 20      
+
+Time complexity : O(2^n) (Worst case)  
+Space complexity : O(n)     
+
+Graph :  
+![Screenshot 2025-04-26 150153](https://github.com/user-attachments/assets/913cd95e-06e0-4dc5-8646-6192a791650a)
 
